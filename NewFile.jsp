@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-i am gay
+lol
 </body>
 </html>
