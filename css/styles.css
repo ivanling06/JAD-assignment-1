@@ -1,0 +1,15 @@
+@charset "UTF-8";
+.cta-button {
+    background-color: #0044cc; /* Blue theme color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #0033aa; /* Darker blue for hover effect */
+}
