@@ -1,15 +1,68 @@
 @charset "UTF-8";
+.body {
+	background-color: #f4f7fb;
+}
+
 .cta-button {
     background-color: #0044cc; /* Blue theme color */
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 30px; /* Combined padding for top/bottom and left/right */
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-left: 40px;
+    margin-bottom: 40px;
 }
 
 .cta-button:hover {
     background-color: #0033aa; /* Darker blue for hover effect */
 }
+
+.main-content h1 {
+	font-size: 45px;
+	margin-top: 40px;
+    margin-left: 40px;
+    padding-right: 300px;
+    
+    
+}
+
+.main-content p {
+	margin-left: 40px;
+    margin-top: 20px;
+    padding-right: 400px;
+    margin-bottom: 20px;
+	
+}
+
+.content-wrapper {
+    display: flex; /* Align items side by side */
+    align-items: center; /* Center items vertically */
+    gap: 15px; /* Space between the text and the image */
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.text-section {
+    flex: 1; /* Make the text section grow to fill the available space */
+}
+
+.image-section {
+    flex: 1; /* Make the image section grow to fill the available space */
+    text-align: center; /* Center the image horizontally */
+}
+
+.service-image {
+    max-width: 100%; /* Ensure the image is responsive */
+    height: auto; /* Maintain the image's aspect ratio */
+    border-radius: 8px; /* Optional: rounded corners for a softer look */
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 40px 0; /* Space around the horizontal line */
+}
+
