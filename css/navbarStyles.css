@@ -12,7 +12,7 @@ body {
 .navbar {
     background-color: #0056b3;
     color: white;
-    padding: 20px 30px;
+    padding: 20px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
