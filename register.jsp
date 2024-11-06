@@ -23,7 +23,7 @@
     
     <div class="register-container">
         <h1>Register</h1>
-        <form action="registerUser.jsp" method="post" onsubmit="return validateForm()">
+        <form action="dbRelated/registerUser.jsp" method="post" onsubmit="return validateForm()">
             <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" required>
             
