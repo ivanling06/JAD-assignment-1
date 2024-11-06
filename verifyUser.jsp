@@ -30,15 +30,23 @@
         ResultSet rs = pstmt.executeQuery();
 
         if (rs.next()) {
-            // Login successful, set session attribute directly
-            session.setAttribute("username", username);  // No need to declare session, it's already available
-            out.println("Login successful!");
-            // Redirect or forward to a secured page
-            response.sendRedirect("adminDashboard.jsp");
+            String role = rs.getString("role"); // Retrieve the user's role
+
+            // Set session attribute for username
+            session.setAttribute("username", username);
+
+            if ("Admin".equalsIgnoreCase(role)) {
+                // Redirect to admin dashboard
+                response.sendRedirect("admin/adminDashboard.jsp");
+            } else if ("Customer".equalsIgnoreCase(role)) {
+                // Redirect to customer dashboard or page
+                response.sendRedirect("home.jsp");
+            } else {
+                out.println("Unknown role. Please contact support.");
+            }
         } else {
             out.println("Invalid username or password.");
         }
-
         conn.close();
     } catch (Exception e) {
         out.println("Error: " + e.getMessage());
