@@ -4,9 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Services</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
+	<%@ include file="navbar.html" %>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<%@ include file="footer.html" %>
 </body>
+
+
+
 </html>

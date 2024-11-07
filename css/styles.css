@@ -1,13 +1,110 @@
 @charset "UTF-8";
+
 .body {
-	background-color: #f4f7fb;
+    background-color: #f4f7fb;
 }
 
+/* Navbar Styling */
+.navbar {
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar-menu li {
+    position: relative;
+}
+
+.navbar-menu a {
+    color: white;
+    padding: 10px 20px;
+    display: block;
+    text-decoration: none;
+}
+
+.navbar-menu a:hover {
+    background-color: #555;
+}
+
+/* Dropdown Menu Styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 200px;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+}
+
+.dropdown-content a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #666;
+}
+
+/* Show main dropdown on hover */
+.dropdown:hover > .dropdown-content {
+    display: block;
+}
+
+/* Styling for nested dropdowns */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-content-submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 180px;
+    background-color: #555;
+    z-index: 2;
+}
+
+.dropdown-content-submenu a {
+    padding: 10px;
+    color: white;
+}
+
+.dropdown-content-submenu a:hover {
+    background-color: #666;
+}
+
+/* Show the services dropdown on category hover */
+.dropdown-submenu:hover > .dropdown-content-submenu {
+    display: block;
+}
+
+/* Call-to-action button */
 .cta-button {
-    background-color: #0044cc; /* Blue theme color */
+    background-color: #0044cc;
     color: #fff;
     border: none;
-    padding: 15px 30px; /* Combined padding for top/bottom and left/right */
+    padding: 15px 30px;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
@@ -17,55 +114,56 @@
 }
 
 .cta-button:hover {
-    background-color: #0033aa; /* Darker blue for hover effect */
+    background-color: #0033aa;
 }
 
+/* Main content styling */
 .main-content h1 {
-	font-size: 45px;
-	margin-top: 40px;
+    font-size: 45px;
+    margin-top: 40px;
     margin-left: 40px;
     padding-right: 300px;
-    
-    
 }
 
 .main-content p {
-	margin-left: 40px;
+    margin-left: 40px;
     margin-top: 20px;
     padding-right: 400px;
     margin-bottom: 20px;
-	
 }
 
+/* Content wrapper for text and image sections */
 .content-wrapper {
-    display: flex; /* Align items side by side */
-    align-items: center; /* Center items vertically */
-    gap: 15px; /* Space between the text and the image */
+    display: flex;
+    align-items: center;
+    gap: 15px;
     margin-left: 40px;
     margin-top: 20px;
 }
 
 .text-section {
-    flex: 1; /* Make the text section grow to fill the available space */
+    flex: 1;
 }
 
 .image-section {
-    flex: 1; /* Make the image section grow to fill the available space */
-    text-align: center; /* Center the image horizontally */
+    flex: 1;
+    text-align: center;
 }
 
 .service-image {
-    max-width: 100%; /* Ensure the image is responsive */
-    height: auto; /* Maintain the image's aspect ratio */
-    border-radius: 8px; /* Optional: rounded corners for a softer look */
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
 }
 
+/* Divider styling */
 hr {
     border: none;
     border-top: 1px solid #ccc;
-    margin: 40px 0; /* Space around the horizontal line */
+    margin: 40px 0;
 }
 
+/* Registration container styling */
 .register-container {
     max-width: 400px;
     margin: 50px auto;
@@ -78,7 +176,7 @@ hr {
 .register-container h1 {
     text-align: center;
     margin-bottom: 20px;
-    color: #0044cc; /* Blue theme color */
+    color: #0044cc;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -100,13 +198,13 @@ hr {
 }
 
 input:focus {
-    border-color: #0044cc; /* Blue focus border */
+    border-color: #0044cc;
     outline: none;
 }
 
 .register-button {
     width: 100%;
-    background-color: #0044cc; /* Blue theme color */
+    background-color: #0044cc;
     color: #fff;
     border: none;
     padding: 15px;
@@ -117,8 +215,6 @@ input:focus {
     font-family: 'Poppins', sans-serif;
 }
 
-.register:hover {
-    background-color: #0033aa; /* Darker blue for hover effect */
+.register-button:hover {
+    background-color: #0033aa;
 }
-
-
