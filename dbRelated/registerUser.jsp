@@ -51,7 +51,7 @@
             // Execute the insert
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                out.println("<h3>Registration successful! You can now <a href='login.jsp'>log in</a>.</h3>");
+                out.println("<h3>Registration successful! You can now <a href='../login.jsp'>log in</a>.</h3>");
             } else {
                 out.println("<h3>Registration failed. Please try again.</h3>");
             }
