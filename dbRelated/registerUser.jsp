@@ -22,6 +22,8 @@
             // Define Connection URL
             String connURL = "jdbc:mysql://localhost:3306/jad-assignment1?user=root&password=root123&serverTimezone=UTC";
             Connection conn = DriverManager.getConnection(connURL);
+            
+            String username = firstName + lastName;
 
             // Hash the password using SHA-256
             String hashedPassword = "";
@@ -39,13 +41,12 @@
             }
 
             // Insert user data into the database using PreparedStatement
-            String sqlStr = "INSERT INTO user (first_name, last_name, email, password, phone_number) VALUES (?, ?, ?, ?, ?)";
+            String sqlStr = "INSERT INTO user (username, email, password, phone_number) VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sqlStr);
-            pstmt.setString(1, firstName);
-            pstmt.setString(2, lastName);
-            pstmt.setString(3, email);
-            pstmt.setString(4, hashedPassword);
-            pstmt.setString(5, phoneNumber);
+            pstmt.setString(1, username);
+            pstmt.setString(2, email);
+            pstmt.setString(3, hashedPassword);
+            pstmt.setString(4, phoneNumber);
 
             // Execute the insert
             int rowsAffected = pstmt.executeUpdate();
