@@ -52,7 +52,7 @@
                 if ("Admin".equalsIgnoreCase(role)) {
                     response.sendRedirect("admin/adminDashboard.jsp");
                 } else if ("Customer".equalsIgnoreCase(role)) {
-                    response.sendRedirect("home.jsp");
+                    response.sendRedirect("../home.jsp");
                 } else {
                     out.println("Unknown role. Please contact support.");
                 }
