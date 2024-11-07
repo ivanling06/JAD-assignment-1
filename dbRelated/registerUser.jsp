@@ -9,12 +9,19 @@
     String lastName = request.getParameter("last_name");
     String email = request.getParameter("email");
     String password = request.getParameter("password");
+    String confirmPassword = request.getParameter("confirm_password");
     String phoneNumber = request.getParameter("phone_number");
+    
+    if (!password.equals(confirmPassword)) {
+        response.sendRedirect("../register.jsp?error=400");
+        return;
+    }
 
     // Check if all fields are filled
-    if (firstName != null && lastName != null && email != null && password != null && phoneNumber != null &&
-        !firstName.isEmpty() && !lastName.isEmpty() && !email.isEmpty() && !password.isEmpty() && !phoneNumber.isEmpty()) {
-
+    if (firstName == null || lastName == null || email == null || password == null || confirmPassword == null || phoneNumber == null ||
+        firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
+        response.sendRedirect("../register.jsp?error=422");
+    } else {
         try {
             // Load JDBC Driver
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -24,6 +31,30 @@
             Connection conn = DriverManager.getConnection(connURL);
             
             String username = firstName + lastName;
+            
+            // Check if username is already taken
+            String checkUserSQL = "SELECT * FROM user WHERE username = ?";
+            PreparedStatement checkUserStmt = conn.prepareStatement(checkUserSQL);
+            checkUserStmt.setString(1, username);
+            ResultSet userResult = checkUserStmt.executeQuery();
+            if (userResult.next()) {
+                response.sendRedirect("../register.jsp?error=410"); // Using 410 as the error code for "username already exists"
+                return;
+            }
+
+            
+            // Check if email is in use by other user
+            String checkEmailSQL = "SELECT * FROM user WHERE email = ?";
+            PreparedStatement checkStmt = conn.prepareStatement(checkEmailSQL);
+            checkStmt.setString(1, email);
+            ResultSet rs = checkStmt.executeQuery();
+
+            if (rs.next()) {
+                // Email is already in use
+                response.sendRedirect("../register.jsp?error=409"); // Conflict error for duplicate email
+                conn.close();
+                return;
+            }
 
             // Hash the password using SHA-256
             String hashedPassword = "";
@@ -36,7 +67,7 @@
                 }
                 hashedPassword = sb.toString();
             } catch (NoSuchAlgorithmException e) {
-                out.println("Error: Unable to hash password.");
+                response.sendRedirect("../register.jsp?error=500");
                 return;
             }
 
@@ -51,19 +82,16 @@
             // Execute the insert
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                out.println("<h3>Registration successful! You can now <a href='../login.jsp'>log in</a>.</h3>");
+            	response.sendRedirect("../register.jsp?success=1");
             } else {
-                out.println("<h3>Registration failed. Please try again.</h3>");
+                response.sendRedirect("../register.jsp?error=500");
             }
 
             // Close the connection
             conn.close();
         } catch (Exception e) {
-            // Log the error internally (use a logging framework in a real project)
-            out.println("<h3>An error occurred. Please try again later.</h3>");
+            response.sendRedirect("../register.jsp?error=500");
             e.printStackTrace();
         }
-    } else {
-        out.println("<h3>Please fill in all fields.</h3>");
     }
 %>
