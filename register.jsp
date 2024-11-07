@@ -3,6 +3,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+ .message-container  {
+    position: relative;
+    top: -20px; /* Adjust this value to move the message closer or farther from the form */
+    margin-bottom: 20px;
+}
+
+    .error-message {
+        color: #d8000c;
+        background-color: #ffd2d2;
+        border: 1px solid #d8000c;
+    }
+
+    .success-message {
+        color: #4F8A10;
+        background-color: #DFF2BF;
+        border: 1px solid #4F8A10;
+    }
+</style>
 <meta charset="UTF-8">
 <title>Register - Sparklean</title>
 <link rel="stylesheet" href="css/styles.css">
@@ -40,7 +59,7 @@
     String successCode = request.getParameter("success");
     if (errorCode != null) {
     %>
-    <div style="color: red;">
+     <div class="message-container error-message">
         <% if ("422".equals(errorCode)) { %>
             <p>Please fill in all required fields.</p>
         <% } else if ("500".equals(errorCode)) { %>
@@ -54,7 +73,7 @@
         <% } %>
     </div>
     <% } else if ("1".equals(successCode)) { %>
-    <div style="color: green;">
+     <div class="message-container success-message">
         <p>Successfully registered! You can now <a href="login.jsp">log in</a>.</p>
     </div>
     <% } %>
