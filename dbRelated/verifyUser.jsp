@@ -50,7 +50,7 @@
 
                 // Redirect based on role
                 if ("Admin".equalsIgnoreCase(role)) {
-                    response.sendRedirect("admin/adminDashboard.jsp");
+                    response.sendRedirect("../admin/adminDashboard.jsp");
                 } else if ("Customer".equalsIgnoreCase(role)) {
                     response.sendRedirect("../home.jsp");
                 } else {
