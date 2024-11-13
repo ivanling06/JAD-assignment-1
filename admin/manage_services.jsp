@@ -6,18 +6,54 @@
 <title>Manage Services</title>
     <link rel="stylesheet" href="../css/navbarAdminStyles.css">
     <link rel="stylesheet" href="../css/adminStyles.css">
-</head>
 <style>
-    table, th, td {
-        border: 1px solid black;
-        border-collapse: collapse;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-    th, td {
-        padding: 8px;
-        text-align: left;
-    }
-</style>
+table th, table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+table th {
+    background-color: #007bff;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+table tr:hover {
+    background-color: #f4f7fb;
+}
+
+table td:last-child {
+    text-align: center;
+}
+
+/* Button styling for actions */
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+</style>    
+</head>
 <body>
     <%@include file="../adminNavbar.html" %>
     <%@ page import="java.sql.*" %>
