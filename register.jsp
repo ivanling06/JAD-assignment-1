@@ -22,6 +22,26 @@
         border: 1px solid #4F8A10;
     }
 </style>
+<script>
+        function validateForm() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+            
+            // Check if password is exactly 8 characters long
+            if (password.length !== 8) {
+                alert("Password must be exactly 8 characters long.");
+                return false;
+            }
+            
+            // Check if password and confirm password match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please try again.");
+                return false;
+            }
+
+            return true; // Form is valid
+        }
+</script>
 <meta charset="UTF-8">
 <title>Register - Sparklean</title>
 <link rel="stylesheet" href="css/styles.css">
@@ -31,7 +51,7 @@
 
     <div class="register-container">
         <h1>Register</h1>
-        <form action="dbRelated/registerUser.jsp" method="post">
+          <form action="dbRelated/registerUser.jsp" method="post" onsubmit="return validateForm();">
             <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" required>
             
@@ -64,8 +84,6 @@
             <p>Please fill in all required fields.</p>
         <% } else if ("500".equals(errorCode)) { %>
             <p>Registration failed due to a system error. Please try again later.</p>
-        <% } else if ("400".equals(errorCode)) { %>
-            <p>Passwords do not match. Please try again.</p>
         <% } else if ("409".equals(errorCode)) { %>
             <p>This email is already registered. Please use a different email.</p>
         <% } else if ("410".equals(errorCode)) { %>
