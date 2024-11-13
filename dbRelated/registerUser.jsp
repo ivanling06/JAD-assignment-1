@@ -12,10 +12,15 @@
     String confirmPassword = request.getParameter("confirm_password");
     String phoneNumber = request.getParameter("phone_number");
     
-    if (!password.equals(confirmPassword)) {
-        response.sendRedirect("../register.jsp?error=400");
-        return;
-    }
+   // if (password.length() != 8) {
+   //     response.sendRedirect("../register.jsp?error=422");
+   //     return;
+   // }
+    
+   // if (!password.equals(confirmPassword)) {
+   //    response.sendRedirect("../register.jsp?error=400");
+   //     return;
+   //}
 
     // Check if all fields are filled
     if (firstName == null || lastName == null || email == null || password == null || confirmPassword == null || phoneNumber == null ||
