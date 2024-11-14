@@ -22,7 +22,7 @@
         </div>
         <hr>
         
-        <h1>About Our Services</h1>
+        <h1>About Our Service</h1>
         <p>At Sparklean, we are committed to providing exceptional cleaning services tailored to your needs. Whether it’s regular home cleaning or a deep clean for your office, we use eco-friendly products and the latest techniques to deliver spotless results.</p>
     </div>
     
