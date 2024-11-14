@@ -5,11 +5,11 @@
 
 <%
     // Retrieve form data
-    String username = request.getParameter("username");
+    String email = request.getParameter("email");
     String password = request.getParameter("password");
 
     // Check if both fields are filled
-    if (username != null && password != null && !username.isEmpty() && !password.isEmpty()) {
+    if (email != null && password != null && !email.isEmpty() && !password.isEmpty()) {
 
         try {
             // Load JDBC Driver
@@ -35,29 +35,29 @@
             }
 
             // Prepare the SQL statement to prevent SQL injection
-            String sqlStr = "SELECT * FROM user WHERE username = ? AND password = ?";
+            String sqlStr = "SELECT * FROM user WHERE email = ? AND password = ?";
             PreparedStatement pstmt = conn.prepareStatement(sqlStr);
-            pstmt.setString(1, username);
-            pstmt.setString(2, hashedPassword);
+            pstmt.setString(1, email);
+            pstmt.setString(2, hashedPassword);	
             ResultSet rs = pstmt.executeQuery();
 
             // Check if user exists and retrieve role
             if (rs.next()) {
-                String role = rs.getString("role");
-
+                String userRole = rs.getString("role");
                 // Set session attribute for username
-                session.setAttribute("username", username);
-
+                session.setAttribute("email", email);
+				session.setAttribute("userRole", userRole);
+				out.println("Role: " + userRole); // Temporarily for debugging
                 // Redirect based on role
-                if ("Admin".equalsIgnoreCase(role)) {
+                if ("Admin".equalsIgnoreCase(userRole)) {
                     response.sendRedirect("../admin/adminDashboard.jsp");
-                } else if ("Customer".equalsIgnoreCase(role)) {
+                } else if ("Customer".equalsIgnoreCase(userRole)) {
                     response.sendRedirect("../home.jsp");
                 } else {
                     out.println("Unknown role. Please contact support.");
-                }
+                } 
             } else {
-                out.println("Invalid username or password.");
+                out.println("Invalid email or password.");
             }
 
             // Close the connection

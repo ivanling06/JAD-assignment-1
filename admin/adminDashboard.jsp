@@ -2,10 +2,20 @@
 <%@ page import="java.sql.*" %>
 
 <%
-    String adminUser = (String) session.getAttribute("username");
+    /* String adminUser = (String) session.getAttribute("username");
     if (adminUser == null) {
         response.sendRedirect("../login.jsp");
         return;
+    } */
+    
+ // Retrieve session attributes
+    String email = (String) session.getAttribute("email");
+    String userRole = (String) session.getAttribute("userRole");
+
+    // Check if the session is valid and if the user is an admin
+    if (email == null || !"Admin".equals(userRole)) {
+        response.sendRedirect("login.jsp?errCode=invalidLogin");
+        return;  // Stop further processing of the page
     }
 %>
 
@@ -18,7 +28,7 @@
 <body>
 	<%@ include file="../adminNavbar.html" %>  
     <div class="dashboard-container">
-        <h2>Welcome, <%= adminUser %>!</h2>
+        <h2>Welcome Admin</h2>
         <p>Select an option to manage:</p>
 
         <div class="dashboard-links">
