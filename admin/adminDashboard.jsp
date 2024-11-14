@@ -23,8 +23,8 @@
 
         <div class="dashboard-links">
             <a href="manage_feedback.jsp" class="dashboard-link">Manage Feedback</a>
-            <a href="manage_services.jsp" class="dashboard-link">Manage Services</a>
-            <a href="manage_members.jsp" class="dashboard-link">Manage Members</a>
+            <a href="../dbRelated/manage_services.jsp" class="dashboard-link">Manage Services</a>
+            <a href="../dbRelated/manage_members.jsp" class="dashboard-link">Manage Members</a>
             <a href="manage_bookings.jsp" class="dashboard-link">Manage Bookings</a>
         </div>
     </div>
