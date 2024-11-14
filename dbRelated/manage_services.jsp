@@ -111,7 +111,7 @@ button:hover {
             <td><%= name %></td>
             <td><%= description %></td>
             <td><%= price %></td>
-            <td><img src="..<%= image %>"</td>
+            <td><img src="..<%= image %>"></td>
             <td><%= categoryId %></td>
             <td>
                 <button onclick="location.href='editServiceForm.jsp?id=<%= id %>&name=<%= name %>'">Edit</button>
