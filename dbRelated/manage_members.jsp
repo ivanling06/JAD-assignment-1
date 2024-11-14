@@ -3,10 +3,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Manage Services</title>
+<title>Manage Members</title>
     <link rel="stylesheet" href="../css/navbarAdminStyles.css">
     <link rel="stylesheet" href="../css/adminStyles.css">
 <style>
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    margin-right: 30px;
+    margin-left: 30px;
+}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -59,10 +68,8 @@ button:hover {
     <%@ page import="java.sql.*" %>
 
     <%
-        int id;
-        String name, description, image;
-        double price;
-        int categoryId;
+    	int id;
+    	String username, email, phoneNumber, registerDate, role;
 
         try {
             // Step 1: Load JDBC Driver
@@ -78,38 +85,39 @@ button:hover {
             Statement stmt = conn.createStatement();
 
             // Step 5: Execute SQL Command
-            String sqlStr = "SELECT * FROM service";
+            String sqlStr = "SELECT * FROM user";
             ResultSet rs = stmt.executeQuery(sqlStr);
     %>
+	<h1>Manage Members</h1>
     <table>
         <tr>
-            <th>Service ID</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Image</th>
-            <th>Category ID</th>
-            <th>Action</th>
+            <th>User ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Registration date</th>
+            <th>Role</th>
+            <th>Add As Admin</th>
         </tr>
 
         <%
             while (rs.next()) {
-                id = rs.getInt("service_id");
-                name = rs.getString("name");
-                description = rs.getString("description");
-                price = rs.getDouble("price");
-                image = rs.getString("image_path");
-                categoryId = rs.getInt("category_id");
+                id = rs.getInt("user_id");
+                username = rs.getString("username");
+                email = rs.getString("email");
+                phoneNumber = rs.getString("phone_number");
+                registerDate = rs.getString("registration_date");
+                role = rs.getString("role");
         %>
         <tr>
             <td><%= id %></td>
-            <td><%= name %></td>
-            <td><%= description %></td>
-            <td><%= price %></td>
-            <td><img src="..<%= image %>"</td>
-            <td><%= categoryId %></td>
+            <td><%= username %></td>
+            <td><%= email %></td>
+            <td><%= phoneNumber %></td>
+            <td><%= registerDate %></td>
+ 			<td><%= role %></td>
             <td>
-                <button onclick="location.href='editMemberForm.jsp?id=<%= id %>&name=<%= name %>'">Edit</button>
+                <button onclick="location.href='addNewAdmin.jsp?id=<%= id %>&name=<%= username %>'">Add</button>
             </td>
         </tr>
         <%
