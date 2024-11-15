@@ -12,13 +12,8 @@
     String phoneNumber = request.getParameter("phone_number");
 
     // Check if all fields are filled
-<<<<<<< Updated upstream
-    if (firstName == null || lastName == null || email == null || password == null || confirmPassword == null ||
-        firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-=======
     if (username == null || email == null || password == null || confirmPassword == null || phoneNumber == null ||
         username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
->>>>>>> Stashed changes
         response.sendRedirect("../register.jsp?error=422");
     } else {
         try {
