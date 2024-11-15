@@ -5,16 +5,20 @@
 
 <%
     // Retrieve form data
-    String firstName = request.getParameter("first_name");
-    String lastName = request.getParameter("last_name");
+    String username = request.getParameter("username");
     String email = request.getParameter("email");
     String password = request.getParameter("password");
     String confirmPassword = request.getParameter("confirm_password");
     String phoneNumber = request.getParameter("phone_number");
 
     // Check if all fields are filled
+<<<<<<< Updated upstream
     if (firstName == null || lastName == null || email == null || password == null || confirmPassword == null ||
         firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+=======
+    if (username == null || email == null || password == null || confirmPassword == null || phoneNumber == null ||
+        username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
+>>>>>>> Stashed changes
         response.sendRedirect("../register.jsp?error=422");
     } else {
         try {
@@ -24,8 +28,6 @@
             // Define Connection URL
             String connURL = "jdbc:mysql://localhost:3306/jad-assignment1?user=root&password=root123&serverTimezone=UTC";
             Connection conn = DriverManager.getConnection(connURL);
-            
-            String username = firstName + lastName;
             
             // Check if username is already taken
             String checkUserSQL = "SELECT * FROM user WHERE username = ?";

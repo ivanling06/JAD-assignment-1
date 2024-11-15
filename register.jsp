@@ -52,11 +52,8 @@
     <div class="register-container">
         <h1>Register</h1>
           <form action="dbRelated/registerUser.jsp" method="post" onsubmit="return validateForm();">
-            <label for="first_name">First Name:</label>
-            <input type="text" id="first_name" name="first_name" required>
-            
-            <label for="last_name">Last Name:</label>
-            <input type="text" id="last_name" name="last_name" required>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
             
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
