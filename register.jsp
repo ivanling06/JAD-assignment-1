@@ -64,6 +64,9 @@
             <label for="confirm_password">Confirm Password:</label>
             <input type="password" id="confirm_password" name="confirm_password" required>
             
+            <label for="phone_number">Phone number:</label>
+            <input type="tel" id="phone_number" name="phone_number" required>
+            
             <button type="submit" class="register-button">Register</button>
         </form>
     </div>
