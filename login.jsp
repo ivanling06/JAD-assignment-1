@@ -4,8 +4,10 @@
 <head>
 <title>Login - Sparklean</title>
 <link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/navbarStyles.css">
 </head>
 <body>
+<%@ include file="navbar.jsp" %> 
 	<div class="register-container">
 		<h2>Login</h2>
 		<form action="dbRelated/verifyUser.jsp" method="post">
@@ -17,3 +19,4 @@
 	</div>
 </body>
 </html>
+	
