@@ -33,7 +33,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #007bff;
+    background-color: #0057b8;
     color: #ffffff;
     font-weight: bold;
 }
