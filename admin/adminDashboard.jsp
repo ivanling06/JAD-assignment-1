@@ -10,6 +10,7 @@
     
  // Retrieve session attributes
     String email = (String) session.getAttribute("email");
+    String username = (String) session.getAttribute("username");
     String userRole = (String) session.getAttribute("userRole");
 
     // Check if the session is valid and if the user is an admin
@@ -28,7 +29,7 @@
 <body>
 	<%@ include file="../adminNavbar.html" %>  
     <div class="dashboard-container">
-        <h2>Welcome Admin</h2>
+        <h2>Welcome <%=username %></h2>
         <p>Select an option to manage:</p>
 
         <div class="dashboard-links">
