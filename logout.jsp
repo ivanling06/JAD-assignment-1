@@ -7,8 +7,8 @@
     if(userId != null){
     	session.invalidate();
     	
-    }else{
-    	
-    	response.sendRedirect("login.jsp");
     }
+    	
+    response.sendRedirect("home.jsp");
+    
 %>
