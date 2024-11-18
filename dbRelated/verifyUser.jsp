@@ -45,10 +45,12 @@
             if (rs.next()) {
                 String userRole = rs.getString("role");
                 String userId = rs.getString("user_id");
+                String username = rs.getString("username");
                 // Set session attribute for username
                 session.setAttribute("email", email);
 				session.setAttribute("userRole", userRole);
                 session.setAttribute("userId", userId);
+                session.setAttribute("username", username);
 				out.println("Role: " + userRole); // Temporarily for debugging
                 // Redirect based on role
                 if ("Admin".equalsIgnoreCase(userRole)) {
