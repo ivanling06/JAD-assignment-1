@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <div class="navbar">
     <div class="navbar-container">
         <a href="home.jsp">
@@ -41,9 +44,20 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-btn">Account</a>
                 <ul class="dropdown-content">
-                    <li><a href="login.jsp">Login</a></li>
-                    <li><a href="register.jsp">Register</a></li>
-                    <li><a href="profile.jsp">Profile</a></li>
+                    <%
+                        String userId = (String) session.getAttribute("userId");
+                        if (userId == null) {
+                    %>
+                        <li><a href="login.jsp">Login</a></li>
+                        <li><a href="register.jsp">Register</a></li>
+                    <%
+                        } else {
+                    %>
+                        <li><a href="profile.jsp">Profile</a></li>
+                        <li><a href="logout.jsp">Logout</a></li>
+                    <%
+                        }
+                    %>
                 </ul>
             </li>
         </ul>

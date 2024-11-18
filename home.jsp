@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <%@ include file="navbar.html" %>   
+    <%@ include file="navbar.jsp" %>   
     
     <div class="main-content">
         <div class="content-wrapper">

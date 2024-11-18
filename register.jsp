@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <%@ include file="navbar.html"%>
+    <%@ include file="navbar.jsp"%>
 
     <div class="register-container">
         <h1>Register</h1>
