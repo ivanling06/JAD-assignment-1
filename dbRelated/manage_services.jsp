@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/navbarAdminStyles.css">
     <link rel="stylesheet" href="../css/adminStyles.css">
 <style>
+
 body{
     margin-right: 30px;
     margin-left: 30px;
@@ -28,7 +29,7 @@ table th, table td {
 }
 
 table th {
-    background-color: #007bff;
+    background-color: #0057b8;
     color: #ffffff;
     font-weight: bold;
 }
@@ -39,6 +40,12 @@ table tr:hover {
 
 table td:last-child {
     text-align: center;
+}
+
+.table-image {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
 }
 
 /* Button styling for actions */
@@ -111,7 +118,7 @@ button:hover {
             <td><%= name %></td>
             <td><%= description %></td>
             <td><%= price %></td>
-            <td><img src="..<%= image %>"></td>
+            <td><img src="..<%= image %>" class="table-image"></td>
             <td><%= categoryId %></td>
             <td>
                 <button onclick="location.href='editServiceForm.jsp?id=<%= id %>&name=<%= name %>'">Edit</button>
