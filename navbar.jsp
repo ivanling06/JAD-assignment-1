@@ -7,7 +7,7 @@
 			class="logo-image" style="padding-left: 40px;">
 		</a>
 		<ul class="navbar-menu">
-			<li><a href="home.jsp">Home</a></li>
+			<li><a href="../home/home.jsp">Home</a></li>
 			<li class="dropdown"><a href="#" class="dropdown-btn">Services</a>
 				<div class="dropdown-content">
 					<!-- Category 1 -->
