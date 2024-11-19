@@ -3,7 +3,7 @@
 
 <div class="navbar">
 	<div class="navbar-container">
-		<a href="home.jsp"> <img src="images/logo.png" alt="Sparklean"
+		<a href="../home/home.jsp"> <img src="../images/logo.png" alt="Sparklean"
 			class="logo-image" style="padding-left: 40px;">
 		</a>
 		<ul class="navbar-menu">
@@ -12,27 +12,15 @@
 				<div class="dropdown-content">
 					<!-- Category 1 -->
 					<div class="dropdown-submenu">
-						<a href="#">Home Cleaning</a>
-						<div class="dropdown-content-submenu">
-							<a href="#">Basic Home Cleaning</a> <a href="#">Deep Home
-								Cleaning</a> <a href="#">Move-out Cleaning</a>
-						</div>
+						<a href="../JAD-assignment-1/services/homeCleaning.jsp">Home Cleaning</a>
 					</div>
 					<!-- Category 2 -->
 					<div class="dropdown-submenu">
-						<a href="#">Office Cleaning</a>
-						<div class="dropdown-content-submenu">
-							<a href="#">Regular Office Cleaning</a> <a href="#">Deep
-								Office Cleaning</a> <a href="#">Window Cleaning</a>
-						</div>
+						<a href="../JAD-assignment-1/services/officeCleaning.jsp">Office Cleaning</a>
 					</div>
 					<!-- Category 3 -->
 					<div class="dropdown-submenu">
-						<a href="#">Specialized Cleaning</a>
-						<div class="dropdown-content-submenu">
-							<a href="#">Carpet Cleaning</a> <a href="#">Upholstery
-								Cleaning</a> <a href="#">Tile & Grout Cleaning</a>
-						</div>
+						<a href="../JAD-assignment-1/services/specialisedCleaning.jsp">Specialized Cleaning</a>
 					</div>
 				</div></li>
 			<li><a href="contact.jsp">Contact</a></li>

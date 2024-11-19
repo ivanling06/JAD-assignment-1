@@ -1,0 +1,65 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; /* Light blue background */
+}
+
+/* Page Title */
+h1 {
+    text-align: center;
+    color: #0044cc; /* Blue color */
+    margin-top: 20px;
+}
+
+/* Services Container */
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Service Card */
+.service {
+    background: #ffffff;
+    border: 2px solid #0044cc; /* Blue border */
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s;
+}
+
+.service:hover {
+    transform: scale(1.05);
+}
+
+/* Service Image */
+.service img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Service Name */
+.service h2 {
+    font-size: 1.5em;
+    color: #0044cc;
+    margin: 10px 0;
+}
+
+/* Description and Price */
+.service .description, 
+.service .price {
+    font-size: 1em;
+    margin: 10px;
+}
+
+.service .price {
+    font-weight: bold;
+    color: #0044cc;
+}

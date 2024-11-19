@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Sparklean SG | #1 Best Cleaning Services</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/navbarStyles.css">
 </head>
 <body>
-    <%@ include file="navbar.jsp" %>   
+    <%@ include file="../navbar.jsp" %>   
     
     <div class="main-content">
         <div class="content-wrapper">
@@ -17,7 +18,7 @@
                 <button class="cta-button" onclick="window.location.href='booking.jsp'">Book a Cleaning</button>
             </div>
             <div class="image-section">
-                <img src="images/clean.png" alt="Cleaning Service Image" class="service-image">
+                <img src="../images/clean.png" alt="Cleaning Service Image" class="service-image">
             </div>
         </div>
         <hr>
@@ -26,6 +27,6 @@
         <p>At Sparklean, we are committed to providing exceptional cleaning services tailored to your needs. Whether it’s regular home cleaning or a deep clean for your office, we use eco-friendly products and the latest techniques to deliver spotless results.</p>
     </div>
     
-    <%@ include file="footer.html" %>   
+    <%@ include file="../footer.html" %>   
 </body>
 </html>
