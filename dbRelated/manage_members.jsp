@@ -66,6 +66,19 @@ button:hover {
 <body>
     <%@include file="../adminNavbar.html" %>
     <%@ page import="java.sql.*" %>
+    
+        <%
+        // Check if a userId was passed in the request
+        String userIdParam = request.getParameter("userId");
+        if (userIdParam != null && !userIdParam.isEmpty()) {
+            // Set the userId in the session
+            session.setAttribute("userId", userIdParam);
+
+            // Optionally redirect to addNewAdmin.jsp
+            response.sendRedirect("addNewAdmin.jsp");
+            return; // Prevent further processing of this page
+        }
+    %>
 
     <%
     	int id;
@@ -88,7 +101,7 @@ button:hover {
             String sqlStr = "SELECT * FROM user";
             ResultSet rs = stmt.executeQuery(sqlStr);
     %>
-	<h1>Manage Members</h1>
+	<h1 style="margin-top: 100px;">Manage Members</h1>
     <table>
         <tr>
             <th>User ID</th>
@@ -97,7 +110,7 @@ button:hover {
             <th>Phone Number</th>
             <th>Registration date</th>
             <th>Role</th>
-            <th>Add As Admin</th>
+            <th>Remove/Add As Admin</th>
         </tr>
 
         <%
@@ -117,7 +130,8 @@ button:hover {
             <td><%= registerDate %></td>
  			<td><%= role %></td>
             <td>
-                <button onclick="location.href='addNewAdmin.jsp?id=<%= id %>&name=<%= username %>'">Add</button>
+      		 	<button style="background-color: #0057b8;" onclick="location.href='addNewAdmin.jsp?passedId=<%= id %>'">Add</button>
+      		 	<button style="background-color: #dc3545;" onclick="location.href='removeAdmin.jsp?passedId=<%= id %>'">Remove</button>
             </td>
         </tr>
         <%
