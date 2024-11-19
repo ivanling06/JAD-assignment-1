@@ -34,13 +34,13 @@
 					<%
 					if (userId == null) {
 					%>
-					<li><a href="login.jsp">Login</a></li>
-					<li><a href="register.jsp">Register</a></li>
+					<li><a href="../login.jsp">Login</a></li>
+					<li><a href="../register.jsp">Register</a></li>
 					<%
 					} else {
 					%>
-					<li><a href="profile.jsp">Profile</a></li>
-					<li><a href="logout.jsp">Logout</a></li>
+					<li><a href="../profile.jsp">Profile</a></li>
+					<li><a href="../logout.jsp">Logout</a></li>
 					<%
 					}
 					%>
