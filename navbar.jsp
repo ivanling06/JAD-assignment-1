@@ -12,15 +12,15 @@
 				<div class="dropdown-content">
 					<!-- Category 1 -->
 					<div class="dropdown-submenu">
-						<a href="../JAD-assignment-1/services/homeCleaning.jsp">Home Cleaning</a>
+						<a href="../services/homeCleaning.jsp">Home Cleaning</a>
 					</div>
 					<!-- Category 2 -->
 					<div class="dropdown-submenu">
-						<a href="../JAD-assignment-1/services/officeCleaning.jsp">Office Cleaning</a>
+						<a href="../services/officeCleaning.jsp">Office Cleaning</a>
 					</div>
 					<!-- Category 3 -->
 					<div class="dropdown-submenu">
-						<a href="../JAD-assignment-1/services/specialisedCleaning.jsp">Specialized Cleaning</a>
+						<a href="../services/specialisedCleaning.jsp">Specialized Cleaning</a>
 					</div>
 				</div></li>
 			<li><a href="contact.jsp">Contact</a></li>
