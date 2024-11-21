@@ -4,14 +4,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Manage Services</title>
-    <link rel="stylesheet" href="../css/navbarAdminStyles.css">
-    <link rel="stylesheet" href="../css/adminStyles.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/navbarAdminStyles.css">
+<link rel="stylesheet" href="../css/adminStyles.css">
 <style>
-
-body{
+/* Apply Poppins font to the entire page */
+body {
     margin-right: 30px;
     margin-left: 30px;
+    font-family: 'Poppins', sans-serif;
 }
+
+/* Table styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -31,7 +35,7 @@ table th, table td {
 table th {
     background-color: #0057b8;
     color: #ffffff;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 table tr:hover {
@@ -58,72 +62,144 @@ button {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
- .inline-service-form {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1.5rem;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-}
-
-.form-group {
+/* Form styling */
+.inline-service-form {
     display: flex;
     flex-direction: column;
-    flex-basis: 22%; /* Adjust based on how many fields you have */
-    min-width: 150px;
+    gap: 1.5rem;
 }
 
-.inline-service-form textarea {
-    resize: horizontal; /* Allows only horizontal resizing */
-    min-width: 200px;
-    max-width: 300px; /* Prevents the form from breaking */
+.form-container {
+    width: 100%; /* Matches table width */
+    max-width: 100%; /* Prevents overflow */
+    margin-top: 2rem; /* Adjust vertical spacing */
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Ensures padding doesn't affect the width */
 }
 
+/* Label styling */
 .inline-service-form label {
-    font-weight: bold;
+    font-weight: 600;
     color: #0057b8;
     margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
 }
 
+/* Input and Textarea styling */
 .inline-service-form input[type="text"],
 .inline-service-form input[type="number"],
 .inline-service-form textarea,
 .inline-service-form select {
     padding: 0.5rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
     transition: border-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-/* Button styles */
+/* Focus styling for inputs */
+.inline-service-form input[type="text"]:focus,
+.inline-service-form input[type="number"]:focus,
+.inline-service-form textarea:focus,
+.inline-service-form select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+.inline-service-form textarea {
+    resize: vertical;
+    max-width: 100%;
+    min-height: 100px;
+}
+
+/* Submit Button styling */
 .inline-service-form button {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
     background-color: #007bff;
     color: #ffffff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    align-self: flex-start;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
 }
 
 .inline-service-form button:hover {
     background-color: #0056b3;
 }
-    
-</style>    
+
+/* Table Input Styling */
+table input[type="text"],
+table input[type="number"],
+table textarea,
+table select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+    width: 100%; /* Ensures the fields span the table cell */
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Focus styling for table inputs */
+table input[type="text"]:focus,
+table input[type="number"]:focus,
+table textarea:focus,
+table select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+.btn-save, .btn-delete {
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.btn-save {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-save:hover {
+    background-color: #45a049;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #e53935;
+}
+
+</style>  
 </head>
 <body>
     <%@include file="../adminNavbar.html" %>
@@ -149,7 +225,8 @@ button:hover {
             Statement stmt = conn.createStatement();
 
             // Step 5: Execute SQL Command
-            String sqlStr = "SELECT * FROM service";
+            String sqlStr = "SELECT s.service_id, s.name, s.description, s.price, sc.name, s.image_path, s.category_id " +
+                    "FROM service s JOIN service_category sc ON s.category_id = sc.category_id WHERE 1=1";
             ResultSet rs = stmt.executeQuery(sqlStr);
     %>
     
@@ -196,6 +273,7 @@ button:hover {
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
+            <th>Image Path</th>
             <th>Image</th>
             <th>Category ID</th>
             <th>Action</th>
@@ -211,15 +289,30 @@ button:hover {
                 categoryId = rs.getInt("category_id");
         %>
         <tr>
-            <td><%= id %></td>
-            <td><%= name %></td>
-            <td><%= description %></td>
-            <td><%= price %></td>
-            <td><img src="..<%= image %>" class="table-image"></td>
-            <td><%= categoryId %></td>
-            <td>
-                <button onclick="location.href='editServiceForm.jsp?id=<%= id %>&name=<%= name %>'">Edit</button>
-            </td>
+            <td><input type="text" name="service_id" value="<%= id %>" readonly></td>
+            <td><input type="text" name="name" value="<%= name %>" required></td>
+            <td><input type="text" name="description" value="<%= description %>" required></td>
+            <td><input type="number" name="price" value="<%= price %>" required></td>
+            <td><input type="text" name="image" value="<%= image %>" required></td>
+   			<td><img src="..<%= image %>" class="table-image class-table"></td>
+    <td>
+        <select name="category_id" required>
+            <option value="" disabled>Select Category</option>
+            <option value="1" <%= (categoryId == 1) ? "selected" : "" %>>Home Cleaning</option>
+            <option value="2" <%= (categoryId == 2) ? "selected" : "" %>>Office Cleaning</option>
+            <option value="3" <%= (categoryId == 3) ? "selected" : "" %>>Specialized Cleaning</option>
+        </select>
+    </td>
+    <td>	
+        <form action="update_service.jsp" method="post" style="display:inline;">
+            <input type="hidden" name="service_id" value="<%= id %>">
+            <input type="submit" value="Save" class="btn-save">
+        </form>
+        <form action="delete_service.jsp" method="post" style="display:inline;">
+            <input type="hidden" name="service_id" value="<%= id %>">
+            <input type="submit" value="Delete" class="btn-delete" onclick="return confirm('Are you sure you want to delete this service?')">
+        </form>	
+    </td>
         </tr>
         <%
             }
