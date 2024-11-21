@@ -47,7 +47,7 @@
                         <img src="..<%= imagePath %>" alt="<%= serviceName %>" class="service-image">
                         <h2><%= serviceName %></h2>
                         <p class="description"><%= description %></p>
-                        <p class="price">Price: $<%= price %>0</p>
+                        <p class="price">Price: $<%= price %></p>
                     </div>
         <%
                 }

@@ -15,7 +15,7 @@
 
     // Check if the session is valid and if the user is an admin
     if (email == null || !"Admin".equals(userRole)) {
-        response.sendRedirect("login.jsp?errCode=invalidLogin");
+        response.sendRedirect("../logIn/login.jsp?errCode=invalidLogin");
         return;  // Stop further processing of the page
     }
 %>

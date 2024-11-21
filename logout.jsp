@@ -9,6 +9,6 @@
     	
     }
     	
-    response.sendRedirect("home.jsp");
-    
+    response.sendRedirect("./home/home.jsp");
+   
 %>
