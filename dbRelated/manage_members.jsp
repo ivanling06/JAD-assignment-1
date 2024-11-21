@@ -61,6 +61,32 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+/* Table Input Styling */
+table input[type="text"],
+table input[type="number"],
+table textarea,
+table select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+    width: 100%; /* Ensures the fields span the table cell */
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+/* Focus styling for table inputs */
+table input[type="text"]:focus,
+table input[type="number"]:focus,
+table textarea:focus,
+table select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+}
 </style>    
 </head>
 <body>
@@ -123,12 +149,12 @@ button:hover {
                 role = rs.getString("role");
         %>
         <tr>
-            <td><%= id %></td>
-            <td><%= username %></td>
-            <td><%= email %></td>
-            <td><%= phoneNumber %></td>
-            <td><%= registerDate %></td>
- 			<td><%= role %></td>
+        	<td><input type="text" name="user_id" value="<%= id %>" readonly></td>
+        	<td><input type="text" name="username" value="<%= username %>" required></td>
+            <td><input type="text" name="email" value="<%= email %>" required></td>
+            <td><input type="number" name="phoneNumber" value="<%= phoneNumber %>" required></td>
+            <td><input type="text" name="registration_date" value="<%= registerDate %>" readonly></td>
+            <td><input type="text" name="role" value="<%= role %>" readonly></td>
             <td>
       		 	<button style="background-color: #0057b8;" onclick="location.href='addNewAdmin.jsp?passedId=<%= id %>'">Add</button>
       		 	<button style="background-color: #dc3545;" onclick="location.href='removeAdmin.jsp?passedId=<%= id %>'">Remove</button>
