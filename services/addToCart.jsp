@@ -1,56 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Service</title>
+    <link rel="stylesheet" href="../css/formStyles.css">
+</head>
+<body>
 <%
-
-	String userId = (String) session.getAttribute("userId");
-	if (userId == null) {
-	    // Redirect to login page
-	    response.sendRedirect("../logIn/login.jsp");
-	    return; // Stop further execution
-	}
-
-    String serviceId = request.getParameter("serviceId");
-    String serviceName = request.getParameter("serviceName");
-    String price = request.getParameter("price");
-    String status = "PENDING"; // Default status
-    String bookingDate = new java.sql.Date(System.currentTimeMillis()).toString();
-    String bookingTime = new java.sql.Time(System.currentTimeMillis()).toString();
-    String specialRequests = ""; // Example field, modify as needed
-
-    Connection conn = null;
-    PreparedStatement pstmt = null;
-
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        String connURL = "jdbc:mysql://localhost:3306/jad-assignment1?user=root&password=root123&serverTimezone=UTC";
-        conn = DriverManager.getConnection(connURL);
-
-        String sqlStr = "INSERT INTO booking (customer_id, service_id, booking_date, booking_time, special_requests, status, created_at) " +
-                        "VALUES (?, ?, ?, ?, ?, ?, NOW())";
-        pstmt = conn.prepareStatement(sqlStr);
-        pstmt.setString(1, userId);
-        pstmt.setString(2, serviceId);
-        pstmt.setString(3, bookingDate);
-        pstmt.setString(4, bookingTime);
-        pstmt.setString(5, specialRequests);
-        pstmt.setString(6, status);
-
-        int rowsInserted = pstmt.executeUpdate();
-        if (rowsInserted > 0) {
-            out.println("<h3>Service added to cart successfully!</h3>");
-        } else {
-            out.println("<h3>Failed to add service to cart. Please try again.</h3>");
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-        out.println("<h3>An error occurred. Please try again later.</h3>");
-    } finally {
-        try {
-            if (pstmt != null) pstmt.close();
-            if (conn != null) conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+		String userId = (String) session.getAttribute("userId");
+		if (userId == null) {
+		    response.sendRedirect("../logIn/login.jsp");
+		    return;
+		}
 %>
-<a href="allServices.jsp">Back to Services</a>
+
+    <h1>Book Service</h1>
+    <form action="../dbRelated/processAddToCart.jsp" method="POST">
+        <input type="hidden" name="serviceId" value="<%= request.getParameter("serviceId") %>">
+
+        <label for="bookingDate">Select Date:</label>
+        <input type="date" id="bookingDate" name="bookingDate" required>
+
+        <label for="bookingTime">Select Time Slot:</label>
+        <select id="bookingTime" name="bookingTime" required>
+            <option value="08:00:00">8:00 AM - 12:00 PM</option>
+            <option value="12:00:00">12:00 PM - 4:00 PM</option>
+            <option value="16:00:00">4:00 PM - 8:00 PM</option>
+            <option value="20:00:00">8:00 PM - 12:00 AM</option>
+        </select>
+
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+        <label for="specialRequests">Special Requests:</label>
+        <textarea id="specialRequests" name="specialRequests" placeholder="Any special requests..." rows="4"></textarea>
+
+        <button type="submit">Add to Cart</button>
+    </form>
+</body>
+</html>
