@@ -20,6 +20,7 @@ h1 {
     justify-content: center;
     gap: 20px;
     padding: 20px;
+    margin-bottom: 50px; /* Add space below the services container */
 }
 
 /* Service Card */
@@ -62,4 +63,47 @@ h1 {
 .service .price {
     font-weight: bold;
     color: #0044cc;
+}
+
+/* Pagination Styling */
+.pagination {
+    text-align: center; /* Center the pagination links */
+    margin: 20px 0;     /* Add space around pagination */
+    clear: both;        /* Prevent it from colliding with floating elements */
+}
+
+.pagination ul {
+    list-style: none;
+    padding: 0;
+    display: inline-flex; /* Display links inline */
+    justify-content: center; /* Center the list items */
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a, .pagination span {
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: #0044cc; /* Matches your theme color */
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.pagination a:hover {
+    background-color: #0044cc;
+    color: #fff;
+}
+
+.pagination .active span {
+    background-color: #0044cc;
+    color: #fff;
+    border: none;
+}
+
+.pagination .disabled span {
+    color: #aaa;
+    pointer-events: none;
 }

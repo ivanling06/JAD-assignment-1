@@ -8,7 +8,7 @@
 		</a>
 		<ul class="navbar-menu">
 			<li><a href="../home/home.jsp">Home</a></li>
-			<li class="dropdown"><a href="#" class="dropdown-btn">Services</a>
+			<li class="dropdown"><a href="../services/allServices.jsp" class="dropdown-btn">Services</a>
 				<div class="dropdown-content">
 					<!-- Category 1 -->
 					<div class="dropdown-submenu">
