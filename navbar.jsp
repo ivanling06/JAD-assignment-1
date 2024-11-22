@@ -24,6 +24,7 @@
 					</div>
 				</div></li>
 			<li><a href="contact.jsp">Contact</a></li>
+			<li><a href="../feedback/feedback.jsp">Feedback</a></li>
 			<li class="dropdown">
 				<%
 				String userId = (String) session.getAttribute("userId");
