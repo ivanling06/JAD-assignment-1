@@ -83,8 +83,6 @@
             <p>Registration failed due to a system error. Please try again later.</p>
         <% } else if ("409".equals(errorCode)) { %>
             <p>This email is already registered. Please use a different email.</p>
-        <% } else if ("410".equals(errorCode)) { %>
-            <p>This username is already taken. Please choose a different username.</p>
         <% } %>
     </div>
     <% } else if ("1".equals(successCode)) { %>
