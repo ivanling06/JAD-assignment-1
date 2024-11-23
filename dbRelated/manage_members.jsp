@@ -94,6 +94,14 @@ table select:focus {
     <%@ page import="java.sql.*" %>
     
         <%
+        
+        String userId = (String) session.getAttribute("userId");
+    	if (userId == null) {
+    	    // Redirect to login page
+    	    response.sendRedirect("../logIn/login.jsp");
+    	    return; // Stop further execution
+    	}
+    	
         // Check if a userId was passed in the request
         String userIdParam = request.getParameter("userId");
         if (userIdParam != null && !userIdParam.isEmpty()) {
@@ -124,7 +132,8 @@ table select:focus {
             Statement stmt = conn.createStatement();
 
             // Step 5: Execute SQL Command
-            String sqlStr = "SELECT * FROM user";
+            String sqlStr = "SELECT * FROM user " +
+                "ORDER BY user_id ASC";
             ResultSet rs = stmt.executeQuery(sqlStr);
     %>
 	<h1 style="margin-top: 100px;">Manage Members</h1>
