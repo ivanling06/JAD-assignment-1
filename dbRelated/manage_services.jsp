@@ -204,8 +204,15 @@ table select:focus {
 <body>
     <%@include file="../adminNavbar.html" %>
     <%@ page import="java.sql.*" %>
-
+	
     <%
+    String userId = (String) session.getAttribute("userId");
+	if (userId == null) {
+	    // Redirect to login page
+	    response.sendRedirect("../logIn/login.jsp");
+	    return; // Stop further execution
+	}
+	
         int id;
         String name, description, image;
         double price;
@@ -225,8 +232,11 @@ table select:focus {
             Statement stmt = conn.createStatement();
 
             // Step 5: Execute SQL Command
-            String sqlStr = "SELECT s.service_id, s.name, s.description, s.price, sc.name, s.image_path, s.category_id " +
-                    "FROM service s JOIN service_category sc ON s.category_id = sc.category_id WHERE 1=1";
+           String sqlStr = "SELECT s.service_id, s.name, s.description, s.price, sc.name, s.image_path, s.category_id " +
+                "FROM service s " +
+                "JOIN service_category sc ON s.category_id = sc.category_id " +
+                "WHERE 1=1 " + 
+                "ORDER BY s.service_id ASC";
             ResultSet rs = stmt.executeQuery(sqlStr);
     %>
     
@@ -243,10 +253,10 @@ table select:focus {
             <textarea id="description" name="description" rows="4" required></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="price">Price:</label>
-            <input type="number" id="price" name="price" step="0.01" required>
-        </div>
+	        <div class="form-group">
+	            <label for="price">Price:</label>
+	            <input type="number" id="price" name="price" step="0.01" required>
+	        </div>
 
         <div class="form-group">
             <label for="image">Image URL:</label>
@@ -306,6 +316,11 @@ table select:focus {
     <td>	
         <form action="update_service.jsp" method="post" style="display:inline;">
             <input type="hidden" name="service_id" value="<%= id %>">
+            <input type="hidden" name="name" value="<%= name %>" required>
+            <input type="hidden" name="description" value="<%= description %>" required>
+            <input type="hidden" name="price" value="<%= price %>" required>
+            <input type="hidden" name="image" value="<%= image %>" required>
+            <input type="hidden" name="category_id" value="<%= categoryId %>" required>    
             <input type="submit" value="Save" class="btn-save">
         </form>
         <form action="delete_service.jsp" method="post" style="display:inline;">
@@ -328,4 +343,30 @@ table select:focus {
     %>
     </table>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all input fields of type number
+        const numberInputs = document.querySelectorAll('input[type="number"]');
+
+        // Add an event listener to each number input
+        numberInputs.forEach(input => {
+            // Prevent invalid keys from being pressed
+            input.addEventListener('keydown', function(event) {
+                if (
+                    event.key === 'e' || 
+                    event.key === 'E' || 
+                    event.key === '+' || 
+                    event.key === '-'
+                ) {
+                    event.preventDefault();
+                }
+            });
+
+            // Optional: Clean up invalid characters if pasted into the field
+            input.addEventListener('input', function() {
+                this.value = this.value.replace(/[eE+\-]/g, '');
+            });
+        });
+    });
+</script>
 </html>
