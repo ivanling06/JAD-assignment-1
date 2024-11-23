@@ -60,7 +60,7 @@
             String sqlStr = "SELECT f.comments, f.rating, f.feedback_date, s.name " +
                 "FROM feedback f " +
                 "JOIN service s ON f.service_id = s.service_id " +
-                "ORDER BY f.feedback_date DESC"; // Ordering by feedback date for display
+                "ORDER BY f.feedback_date DESC"; 
             ResultSet rs = stmt.executeQuery(sqlStr);
     %>
 
@@ -105,6 +105,7 @@
     <h1>All Feedback</h1>
     <table>
         <tr>
+        	<th>Name</th>
             <th>Service Name</th>
             <th>Comment</th>
             <th>Rating</th>
