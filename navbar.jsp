@@ -40,7 +40,7 @@
 					<%
 					} else {
 					%>
-					<li><a href="../logIn/profile.jsp">Profile</a></li>
+					<li><a href="../dbRelated/getProfile.jsp">Profile</a></li>
 					<li><a href="../logIn/logout.jsp">Logout</a></li>
 					<%
 					}
