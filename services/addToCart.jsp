@@ -87,18 +87,12 @@ if (userId == null) {
 <body>
 	<% 
 	    String errorMessage = request.getParameter("error");
-	    if (errorMessage != null) {
-	%>
-	        <div style="color: red;">
-	            <p><%= errorMessage %></p>
-	        </div>
-	<% 
-	    } 
+		String successMessage = request.getParameter("success");
 	%>
     <div class="container">
         <h1>Add to Cart</h1>
         <form action="../dbRelated/processAddToCart.jsp" method="POST">
-            <input type="hidden" name="serviceId" value="<%= request.getParameter("serviceId") %>">
+            <input type="text" name="serviceId" value="<%= request.getParameter("serviceId") %>">
 
             <div class="form-group">
                 <label for="bookingDate">Select Date:</label>
@@ -124,6 +118,17 @@ if (userId == null) {
             </div>
 
             <button type="submit">Add to Cart</button>
+            
+            <% if (errorMessage != null) { %>
+		        <div style="color: red; text_align: center;">
+		            <p><%= errorMessage %></p>
+		        </div>
+		    <% }else if (successMessage != null) { %>
+		
+		        <div style="color: green; text_align: center;">
+		            <p><%= errorMessage %></p>
+		        </div>
+		    <% } %>
         </form>
     </div>
 
