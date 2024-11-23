@@ -14,12 +14,16 @@
 </head>
 <body>
 	<%@ include file="../navbar.jsp"%>
+
 	<%
 	//String userId = (String) session.getAttribute("userId");
 	if (userId == null) {
 		response.sendRedirect("../logIn/login.jsp");
 		return;
 	}
+
+	String errorMessage = request.getParameter("error");
+	String successMessage = request.getParameter("success");
 
 	Connection conn = null;
 	PreparedStatement stmt = null;
@@ -48,17 +52,21 @@
 		</tr>
 		<%
 		while (rs.next()) {
+			String specialRequests = rs.getString("special_requests");
 		%>
 		<tr class="cart-row">
 			<td><%=rs.getString("service_id")%></td>
 			<td><%=rs.getDate("booking_date")%></td>
 			<td><%=rs.getTime("booking_time")%></td>
 			<td><%=rs.getInt("quantity")%></td>
-			<td><%=rs.getString("special_requests")%></td>
+			<td><%=specialRequests == null || specialRequests.isEmpty() ? "Nothing yet" : specialRequests%></td>
 			<td class="cart-actions"><a class="edit-link"
-				href="editCartItem.jsp?cartId=<%=rs.getInt("cart_id")%>">Edit</a>
-				<a class="delete-link"
-				href="deleteCartItem.jsp?cartId=<%=rs.getInt("cart_id")%>">Delete</a>
+				href="editCartItem.jsp?cartId=<%=rs.getInt("cart_id")%>
+				&service_id=<%=rs.getString("service_id")%>
+				&bookingDate=<%=rs.getDate("booking_date")%>
+				&bookingTime=<%=rs.getTime("booking_time")%>
+				&quantity=<%=rs.getInt("quantity")%>
+				&specialRequests=<%=specialRequests == null || specialRequests.isEmpty() ? "" : specialRequests%>">Edit</a>
 			</td>
 		</tr>
 		<%
@@ -66,7 +74,23 @@
 		%>
 	</table>
 	<br>
-	<form class="checkout-form" action="checkout.jsp" method="post">
+	<%
+	if (errorMessage != null) {
+	%>
+	<div style="color: red; text_align: center;">
+		<p><%=errorMessage%></p>
+	</div>
+	<%
+	} else if (successMessage != null) {
+	%>
+
+	<div style="color: green; text_align: center;">
+		<p><%=successMessage%></p>
+	</div>
+	<%
+	}
+	%>
+	<form class="checkout-form" action="checkOut.jsp" method="post">
 		<button type="submit" class="checkout-button">Checkout</button>
 	</form>
 

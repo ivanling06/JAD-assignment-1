@@ -126,7 +126,7 @@ if (userId == null) {
 		    <% }else if (successMessage != null) { %>
 		
 		        <div style="color: green; text_align: center;">
-		            <p><%= errorMessage %></p>
+		            <p><%= successMessage %></p>
 		        </div>
 		    <% } %>
         </form>
