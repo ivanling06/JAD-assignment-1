@@ -109,6 +109,7 @@
 
         if (rowsAffected > 0) {
             out.println("<p>Success: User role updated to admin!</p>");
+            response.sendRedirect("manage_members.jsp");
         } else {
             out.println("<p>Error: Failed to update the user role.</p>");
         }
