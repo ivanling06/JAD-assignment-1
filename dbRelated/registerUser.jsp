@@ -23,16 +23,6 @@
             // Define Connection URL
             String connURL = "jdbc:mysql://localhost:3306/jad-assignment1?user=root&password=root123&serverTimezone=UTC";
             Connection conn = DriverManager.getConnection(connURL);
-            
-            // Check if username is already taken
-            String checkUserSQL = "SELECT * FROM user WHERE username = ?";
-            PreparedStatement checkUserStmt = conn.prepareStatement(checkUserSQL);
-            checkUserStmt.setString(1, username);
-            ResultSet userResult = checkUserStmt.executeQuery();
-            if (userResult.next()) {
-                response.sendRedirect("../logIn/register.jsp?error=410");
-                return;
-            }
 
             // Check if email is in use by another user
             String checkEmailSQL = "SELECT * FROM user WHERE email = ?";

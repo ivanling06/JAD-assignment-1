@@ -145,6 +145,7 @@ table select:focus {
             <th>Phone Number</th>
             <th>Registration date</th>
             <th>Role</th>
+            <th>Update/Delete</th>
             <th>Remove/Add As Admin</th>
         </tr>
 
@@ -164,6 +165,10 @@ table select:focus {
             <td><input type="number" name="phoneNumber" value="<%= phoneNumber %>" required></td>
             <td><input type="text" name="registration_date" value="<%= registerDate %>" readonly></td>
             <td><input type="text" name="role" value="<%= role %>" readonly></td>
+            <td>
+      		 	<button style="background-color: #0057b8;" onclick="location.href='update_user.jsp?passedId=<%= id %>'">Update</button>
+      		 	<button style="background-color: #dc3545;" onclick="location.href='delete_user.jsp?passedId=<%= id %>'">Delete</button>
+            </td>
             <td>
       		 	<button style="background-color: #0057b8;" onclick="location.href='addNewAdmin.jsp?passedId=<%= id %>'">Add</button>
       		 	<button style="background-color: #dc3545;" onclick="location.href='removeAdmin.jsp?passedId=<%= id %>'">Remove</button>
