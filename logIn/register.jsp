@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -44,15 +44,15 @@
 </script>
 <meta charset="UTF-8">
 <title>Register - Sparklean</title>
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <%@ include file="navbar.jsp"%>
+    <%@ include file="../navbar.jsp"%>
 
     <div class="register-container">
         <h1>Register</h1>
-          <form action="dbRelated/registerUser.jsp" method="post" onsubmit="return validateForm();">
-            <label for="username">Username:</label>
+          <form action="../dbRelated/registerUser.jsp" method="post" onsubmit="return validateForm();">
+            <label for="username">Name:</label>
             <input type="text" id="username" name="username" required>
             
             <label for="email">Email:</label>
@@ -93,6 +93,6 @@
     </div>
     <% } %>
 
-    <%@ include file="footer.html"%>
+    <%@ include file="../footer.html"%>
 </body>
 </html>
