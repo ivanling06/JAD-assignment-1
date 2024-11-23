@@ -14,7 +14,7 @@
     // Check if all fields are filled
     if (username == null || email == null || password == null || confirmPassword == null || phoneNumber == null ||
         username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || phoneNumber.isEmpty()) {
-        response.sendRedirect("../register.jsp?error=422");
+        response.sendRedirect("../logIn/register.jsp?error=422");
     } else {
         try {
             // Load JDBC Driver
@@ -30,7 +30,7 @@
             checkUserStmt.setString(1, username);
             ResultSet userResult = checkUserStmt.executeQuery();
             if (userResult.next()) {
-                response.sendRedirect("../register.jsp?error=410");
+                response.sendRedirect("../logIn/register.jsp?error=410");
                 return;
             }
 
@@ -41,7 +41,7 @@
             ResultSet rs = checkStmt.executeQuery();
 
             if (rs.next()) {
-                response.sendRedirect("../register.jsp?error=409");
+                response.sendRedirect("../logIn/register.jsp?error=409");
                 conn.close();
                 return;
             }
@@ -58,29 +58,31 @@
                 hashedPassword = sb.toString();
                 out.println("Generated Hash for debugging: " + hashedPassword); // Debug line
             } catch (NoSuchAlgorithmException e) {
-                response.sendRedirect("../register.jsp?error=500");
+                response.sendRedirect("../logIn/register.jsp?error=500");
                 return;
             }
 
             // Insert user data into the database using PreparedStatement
-            String sqlStr = "INSERT INTO user (username, email, password) VALUES (?, ?, ?)";
+            String sqlStr = "INSERT INTO user (username, email, password, phone_number) VALUES (?, ?, ?, ?)";
             PreparedStatement pstmt = conn.prepareStatement(sqlStr);
             pstmt.setString(1, username);
             pstmt.setString(2, email);
             pstmt.setString(3, hashedPassword);
+            pstmt.setString(4, phoneNumber);
+            
 
             // Execute the insert
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
-                response.sendRedirect("../register.jsp?success=1");
+                response.sendRedirect("../logIn/register.jsp?success=1");
             } else {
-                response.sendRedirect("../register.jsp?error=500");
+                response.sendRedirect("../logIn/register.jsp?error=500");
             }
 
             // Close the connection
             conn.close();
         } catch (Exception e) {
-            response.sendRedirect("../register.jsp?error=500");
+            response.sendRedirect("../logIn/register.jsp?error=500");
             e.printStackTrace();
         }
     }
