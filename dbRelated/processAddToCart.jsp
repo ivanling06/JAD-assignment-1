@@ -32,7 +32,7 @@
         rs = checkStmt.executeQuery();
 
         if (rs.next() && rs.getInt("count") > 0) {
-            out.println("<h3>Error: A booking already exists for the selected date and time.</h3>");
+            response.sendRedirect("../services/addToCart.jsp?error=Booking already exists for the selected date and time.");
         } else {
             // Insert into the booking table
             String bookingSql = "INSERT INTO booking (customer_id, service_id, booking_date, booking_time, special_requests, status, created_at) " +
@@ -62,18 +62,17 @@
 
                 int detailsInserted = insertDetailsStmt.executeUpdate();
                 if (detailsInserted > 0) {
-                    out.println("<h3>Booking added successfully!</h3>");
                     response.sendRedirect("../services/allServices.jsp");
                 } else {
-                    out.println("<h3>Error: Failed to add booking details.</h3>");
+                    response.sendRedirect("../services/addToCart.jsp?error=Failed to add booking details.");
                 }
             } else {
-                out.println("<h3>Error: Failed to add booking. Please try again.</h3>");
+                response.sendRedirect("../services/addToCart.jsp?error=Failed to add booking. Please try again.");
             }
         }
     } catch (Exception e) {
         e.printStackTrace();
-        out.println("<h3>An error occurred. Please try again later.</h3>");
+        response.sendRedirect("../services/addToCart.jsp?error=An error occurred. Please try again later.");
     } finally {
         try {
             if (rs != null) rs.close();
@@ -86,4 +85,3 @@
         }
     }
 %>
-<a href="allServices.jsp">Back to Services</a>
