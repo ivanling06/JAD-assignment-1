@@ -38,6 +38,7 @@
 
                 // Loop through results and display them
                 while (rs.next()) {
+                	String serviceId = rs.getString("service_id");
                     String serviceName = rs.getString("name");
                     String description = rs.getString("description");
                     double price = rs.getDouble("price");
@@ -47,7 +48,14 @@
                         <img src="..<%= imagePath %>" alt="<%= serviceName %>" class="service-image">
                         <h2><%= serviceName %></h2>
                         <p class="description"><%= description %></p>
-                        <p class="price">Price: $<%= price %></p>
+                        <p class="price">Price: $<%= price %>0</p>
+                        <!-- Add to Cart button -->
+				        <form action="addToCart.jsp" method="POST" class="add-to-cart-form">
+				            <input type="hidden" name="serviceId" value="<%= serviceId %>">
+				            <input type="hidden" name="serviceName" value="<%= serviceName %>">
+				            <input type="hidden" name="price" value="<%= price %>">
+				            <button type="submit" class="add-to-cart-button">Add to Cart</button>
+				        </form>
                     </div>
         <%
                 }

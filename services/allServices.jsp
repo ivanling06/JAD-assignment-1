@@ -58,7 +58,7 @@
                         <img src="..<%= imagePath %>" alt="<%= serviceName %>" class="service-image">
                         <h2><%= serviceName %></h2>
                         <p class="description"><%= description %></p>
-                        <p class="price">Price: $<%= price %></p>
+                        <p class="price">Price: $<%= price %>0</p>
                         <!-- Add to Cart button -->
 				        <form action="addToCart.jsp" method="POST" class="add-to-cart-form">
 				            <input type="hidden" name="serviceId" value="<%= serviceId %>">
