@@ -1,68 +1,97 @@
-/* General Body Styling */
+/* General Cart Page Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Light blue background */
-    color: #333;
+    background-color: #f9f9f9; /* Light grey background */
     margin: 0;
     padding: 0;
 }
 
-/* Header and Title */
-h1 {
+/* Cart Title */
+.cart-title {
     text-align: center;
-    color: #0044cc; /* Blue color for the main title */
+    color: #0044cc; /* Blue color for the title */
+    margin: 20px 0;
+    font-size: 24px;
 }
 
-/* Table Styling */
-table {
-    width: 80%;
-    margin: 20px auto;
+/* Cart Table */
+.cart-table {
+    width: 90%;
+    margin: 0 auto;
     border-collapse: collapse;
     background-color: #ffffff; /* White background for table */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-table th, table td {
-    border: 1px solid #0044cc; /* Blue borders */
-    padding: 10px;
-    text-align: center;
-}
-
-table th {
-    background-color: #0044cc; /* Blue background for headers */
+.cart-header th {
+    background-color: #0044cc; /* Blue header background */
     color: #ffffff; /* White text for headers */
+    padding: 12px;
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #dddddd;
 }
 
-table tr:nth-child(even) {
-    background-color: #f9f9f9; /* Light grey for alternate rows */
+.cart-row td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #dddddd; /* Light grey borders */
 }
 
-/* Buttons */
-button, a {
-    background-color: #0044cc; /* Blue button background */
-    color: #ffffff; /* White button text */
-    border: none;
+.cart-row:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row colors */
+}
+
+.cart-row:hover {
+    background-color: #e8f0ff; /* Highlight on hover */
+}
+
+/* Actions Column */
+.cart-actions a {
+    margin: 0 5px;
+    padding: 5px 10px;
     border-radius: 5px;
-    padding: 10px 15px;
     text-decoration: none;
     font-size: 14px;
-    cursor: pointer;
-    display: inline-block;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-button:hover, a:hover {
-    background-color: #003399; /* Darker blue on hover */
+.edit-link {
+    background-color: #4caf50; /* Green for edit */
+    color: white;
 }
 
-/* Form and Checkout Button */
-form {
+.edit-link:hover {
+    background-color: #45a049;
+}
+
+.delete-link {
+    background-color: #f44336; /* Red for delete */
+    color: white;
+}
+
+.delete-link:hover {
+    background-color: #e53935;
+}
+
+/* Checkout Button */
+.checkout-form {
     text-align: center;
     margin: 20px 0;
 }
 
-button[type="submit"] {
+.checkout-button {
+    background-color: #0044cc; /* Blue background */
+    color: white;
     font-size: 16px;
     font-weight: bold;
     padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+    background-color: #003399; /* Darker blue on hover */
 }
