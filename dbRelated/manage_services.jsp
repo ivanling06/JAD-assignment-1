@@ -298,35 +298,37 @@ table select:focus {
                 image = rs.getString("image_path");
                 categoryId = rs.getInt("category_id");
         %>
-        <tr>
-            <td><input type="text" name="service_id" value="<%= id %>" readonly></td>
-            <td><input type="text" name="name" value="<%= name %>" required></td>
-            <td><input type="text" name="description" value="<%= description %>" required></td>
-            <td><input type="number" name="price" value="<%= price %>" required></td>
-            <td><input type="text" name="image" value="<%= image %>" required></td>
-   			<td><img src="..<%= image %>" class="table-image class-table"></td>
-    <td>
-        <select name="category_id" required>
-            <option value="" disabled>Select Category</option>
-            <option value="1" <%= (categoryId == 1) ? "selected" : "" %>>Home Cleaning</option>
-            <option value="2" <%= (categoryId == 2) ? "selected" : "" %>>Office Cleaning</option>
-            <option value="3" <%= (categoryId == 3) ? "selected" : "" %>>Specialized Cleaning</option>
-        </select>
-    </td>
-    <td>	
-        <form action="update_service.jsp" method="post" style="display:inline;">
+        <form action="update_service.jsp" method="post">
+        <!-- Hidden field for service ID -->
+        <td><input type="hidden" name="service_id" value="<%= id %>"><%= id %></td>
+
+        <!-- Editable fields -->
+        <td><input type="text" name="name" value="<%= name %>" required></td>
+        <td><input type="text" name="description" value="<%= description %>" required></td>
+        <td><input type="number" name="price" value="<%= price %>" required></td>
+        <td><input type="text" name="image" value="<%= image %>" required></td>
+        <td><img src="..<%= image %>" class="table-image class-table"></td>
+
+        <!-- Category dropdown -->
+        <td>
+            <select name="category_id" required>
+                <option value="1" <%=(categoryId == 1) ? "selected" : ""%>>Home Cleaning</option>
+                <option value="2" <%=(categoryId == 2) ? "selected" : ""%>>Office Cleaning</option>
+                <option value="3" <%=(categoryId == 3) ? "selected" : ""%>>Specialized Cleaning</option>
+            </select>
+        </td>
+
+        <!-- Update button -->
+        <td>
+            <button type="submit">Update</button>
+        </td>
+    </form>
+		<td>
+        <form action="delete_service.jsp" method="post" style="display: inline;">
             <input type="hidden" name="service_id" value="<%= id %>">
-            <input type="hidden" name="name" value="<%= name %>" required>
-            <input type="hidden" name="description" value="<%= description %>" required>
-            <input type="hidden" name="price" value="<%= price %>" required>
-            <input type="hidden" name="image" value="<%= image %>" required>
-            <input type="hidden" name="category_id" value="<%= categoryId %>" required>    
-            <input type="submit" value="Save" class="btn-save">
+            <input type="submit" value="Delete" class="btn-delete" 
+                   onclick="return confirm('Are you sure you want to delete this service?')">
         </form>
-        <form action="delete_service.jsp" method="post" style="display:inline;">
-            <input type="hidden" name="service_id" value="<%= id %>">
-            <input type="submit" value="Delete" class="btn-delete" onclick="return confirm('Are you sure you want to delete this service?')">
-        </form>	
     </td>
         </tr>
         <%
