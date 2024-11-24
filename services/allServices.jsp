@@ -79,7 +79,7 @@
 			<h2><%=serviceName%></h2>
 			<p class="description"><%=description%></p>
 			<p class="price">
-				Price: $<%=price%>0
+				Price: $<%=price%>
 			</p>
 			<!-- Add to Cart button -->
 			<form action="addToCart.jsp" method="POST" class="add-to-cart-form">
