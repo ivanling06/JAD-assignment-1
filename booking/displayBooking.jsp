@@ -26,7 +26,7 @@
 
     // Redirect to login if user is not logged in
     if (userId == null) {
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("../logIn/login.jsp");
         return;
     }
 
@@ -43,7 +43,7 @@
                     "FROM booking b " +
                     "JOIN booking_details bd ON b.booking_id = bd.booking_id " +
                     "JOIN service s ON bd.service_id = s.service_id " +
-                    "WHERE b.customer_id = ?";
+                    "WHERE b.user_id = ?";
 
     try {
         // Establish database connection
