@@ -8,11 +8,11 @@
 <body>
 
 <%@ page import="java.sql.*" %>
-<%@ include file="../checkRole.jsp" %>
 
 <%
     // Retrieve form data
-    String userId1 = request.getParameter("user_id");
+    String userId1 = (String) session.getAttribute("userId");
+    String userId = request.getParameter("user_id");
     String newName = request.getParameter("name");
     String newEmail = request.getParameter("email");
     String newPhone = request.getParameter("phone");
@@ -37,7 +37,7 @@
         pstmt.setString(1, newName);
         pstmt.setString(2, newEmail);
         pstmt.setString(3, newPhone);
-        pstmt.setString(4, userId);
+        pstmt.setString(4, userId1);
         rs = pstmt.executeQuery();
 
         rs.next();
@@ -55,7 +55,7 @@
         pstmt.setString(1, newName);
         pstmt.setString(2, newEmail);
         pstmt.setString(3, newPhone);
-        pstmt.setString(4, userId1);
+        pstmt.setString(4, userId);
 
         int rowsAffected = pstmt.executeUpdate();
 

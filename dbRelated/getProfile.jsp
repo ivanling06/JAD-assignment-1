@@ -141,6 +141,7 @@
             if (user_id == null) {
                 // Redirect to login if no session exists
                 response.sendRedirect("../logIn/login.jsp");
+               System.out.println(user_id);
                 return;
             }
             

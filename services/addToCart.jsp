@@ -92,7 +92,7 @@ if (userId == null) {
     <div class="container">
         <h1>Add to Cart</h1>
         <form action="../dbRelated/processAddToCart.jsp" method="POST">
-            <input type="text" name="serviceId" value="<%= request.getParameter("serviceId") %>">
+            <input type="text" name="serviceId" value="<%= request.getParameter("serviceId") %>" readonly>
 
             <div class="form-group">
                 <label for="bookingDate">Select Date:</label>

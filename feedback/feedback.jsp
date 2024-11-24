@@ -178,93 +178,89 @@ tr:hover {
 	%>
 
 	<!-- Add New Feedback Form -->
-	<div class="form-container">
-		<h1>Add Feedback</h1>
-		<%
-		String successMessage = request.getParameter("success");
-		String errorCode = request.getParameter("errCode");
-		String errorMessage = null;
+<div class="form-container">
+    <h1>Add Feedback</h1>
+    <%
+    String successMessage = request.getParameter("success");
+    String errorCode = request.getParameter("errCode");
+    String errorMessage = null;
 
-		// Map error codes to user-friendly messages
-		if ("1".equals(errorCode)) {
-			errorMessage = "Feedback already exists for this booking. You cannot submit feedback again.";
-		} else if ("2".equals(errorCode)) {
-			errorMessage = "Invalid booking ID. Please try again.";
-		} else if ("3".equals(errorCode)) {
-			errorMessage = "You can only submit feedback for your own bookings.";
-		}
+    // Map error codes to user-friendly messages
+    if ("1".equals(errorCode)) {
+        errorMessage = "Feedback already exists for this booking. You cannot submit feedback again.";
+    } else if ("2".equals(errorCode)) {
+        errorMessage = "Invalid booking ID. Please try again.";
+    } else if ("3".equals(errorCode)) {
+        errorMessage = "You can only submit feedback for your own bookings.";
+    }
 
-		// Display success or error message
-		if (successMessage != null) {
-		%>
-		<div class="success"
-			style="color: #28a745; font-weight: bold; margin-bottom: 15px;">
-			<%=successMessage%>
-		</div>
-		<%
-		} else if (errorMessage != null) {
-		%>
-		<div class="error"
-			style="color: #dc3545; font-weight: bold; margin-bottom: 15px;">
-			<%=errorMessage%>
-		</div>
-		<%
-		}
-		%>
-	</div>
+    // Display success or error message
+    if (successMessage != null) {
+    %>
+    <div class="success" style="color: #28a745; font-weight: bold; margin-bottom: 15px;">
+        <%=successMessage%>
+    </div>
+    <%
+    } else if (errorMessage != null) {
+    %>
+    <div class="error" style="color: #dc3545; font-weight: bold; margin-bottom: 15px;">
+        <%=errorMessage%>
+    </div>
+    <%
+    }
+    %>
 
-	<form action="addFeedback.jsp" method="post">
-		<div class="form-group">
-			<label for="booking_id">Select Your Booking:</label> <select
-				id="booking_id" name="booking_id" required>
-				<%
-				if (!rs.isBeforeFirst()) {
-				%>
-				<option value="">No bookings found. Please book a service
-					or login to leave feedback!</option>
-				<%
-				} else {
-				hasBookings = true;
-				while (rs.next()) {
-					int bookingId = rs.getInt("booking_id");
-					String serviceName = rs.getString("service_name");
-					String bookingDate = rs.getString("booking_date");
-				%>
-				<option value="<%=bookingId%>">
-					<%=serviceName%> (Booked on
-					<%=bookingDate%>)
-				</option>
-				<%
-				}
-				}
-				%>
-			</select>
-		</div>
+    <!-- Feedback Form -->
+    <form action="addFeedback.jsp" method="post">
+        <div class="form-group">
+            <label for="booking_id">Select Your Booking:</label>
+            <select id="booking_id" name="booking_id" required>
+                <%
+                if (!rs.isBeforeFirst()) {
+                %>
+                <option value="">No bookings found. Please book a service or login to leave feedback!</option>
+                <%
+                } else {
+                hasBookings = true;
+                while (rs.next()) {
+                    int bookingId = rs.getInt("booking_id");
+                    String serviceName = rs.getString("service_name");
+                    String bookingDate = rs.getString("booking_date");
+                %>
+                <option value="<%=bookingId%>">
+                    <%=serviceName%> (Booked on <%=bookingDate%>)
+                </option>
+                <%
+                }
+                }
+                %>
+            </select>
+        </div>
 
-		<div class="form-group">
-			<label for="comments">Comment:</label>
-			<textarea id="comments" name="comments" rows="4" required></textarea>
-		</div>
+        <div class="form-group">
+            <label for="comments">Comment:</label>
+            <textarea id="comments" name="comments" rows="4" required></textarea>
+        </div>
 
-		<div class="form-group">
-			<label for="rating">Rating:</label>
-			<div class="star-rating" style="padding-right: 615px;">
-				<input type="radio" id="star5" name="rating" value="5"> <label
-					for="star5" data-value="5">&#9733;</label> <input type="radio"
-					id="star4" name="rating" value="4"> <label for="star4"
-					data-value="4">&#9733;</label> <input type="radio" id="star3"
-					name="rating" value="3"> <label for="star3" data-value="3">&#9733;</label>
-				<input type="radio" id="star2" name="rating" value="2"> <label
-					for="star2" data-value="2">&#9733;</label> <input type="radio"
-					id="star1" name="rating" value="1"> <label for="star1"
-					data-value="1">&#9733;</label>
-			</div>
-		</div>
+        <div class="form-group">
+            <label for="rating">Rating:</label>
+            <div class="star-rating" style="padding-right: 615px;">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5" data-value="5">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" data-value="4">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" data-value="3">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" data-value="2">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" data-value="1">&#9733;</label>
+            </div>
+        </div>
 
-		<button type="submit" class="action-button btn-update"
-			<%=!hasBookings ? "disabled" : ""%>>Submit Feedback</button>
-	</form>
-	</div>
+        <button type="submit" class="action-button btn-update" <%=!hasBookings ? "disabled" : ""%>>Submit Feedback</button>
+    </form>
+</div>
 
 	<%
 	} catch (Exception e) {

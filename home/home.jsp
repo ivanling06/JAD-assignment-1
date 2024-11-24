@@ -15,7 +15,7 @@
             <div class="text-section">
                 <h1>Professional Cleaning Services for a Squeaky Clean Home & Office</h1>
                 <p>Experience the highest standard of cleanliness with our expert team. From spotless homes to immaculate offices, we’ve got you covered.</p>
-                <button class="cta-button" onclick="window.location.href='booking.jsp'">Book a Cleaning</button>
+                <button class="cta-button" onclick="window.location.href='../services/allServices.jsp'">Book a Cleaning</button>
             </div>
             <div class="image-section">
                 <img src="../images/clean.png" alt="Cleaning Service Image" class="service-image">

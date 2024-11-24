@@ -123,7 +123,7 @@
             <input type="hidden" name="cartId" value="<%= cartId %>">
             
             <label for="serviceId">Service ID:</label>
-            <input type="text" id="serviceId" name="serviceId" value="<%= serviceId != null ? serviceId : "" %>" required>
+            <input type="text" id="serviceId" name="serviceId" value="<%= serviceId != null ? serviceId : "" %>" readonly>
 
             <label for="bookingDate">Booking Date:</label>
             <input type="date" id="bookingDate" name="bookingDate" value="<%= bookingDate != null ? bookingDate : "" %>" required>
