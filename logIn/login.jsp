@@ -7,7 +7,12 @@
 <link rel="stylesheet" href="../css/navbarStyles.css">
 </head>
 <body>
-<%@ include file="../navbar.jsp" %> 
+<%@ include file="../navbar.jsp" %>
+<%
+	String errMsg = request.getParameter("errCode");
+	
+%>
+ 
 	<div class="register-container">
 		<h2>Login</h2>
 		<form action="../dbRelated/verifyUser.jsp" method="post">

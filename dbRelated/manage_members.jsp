@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Manage Members</title>
+<%@ include file="../checkRole.jsp" %>
     <link rel="stylesheet" href="../css/navbarAdminStyles.css">
     <link rel="stylesheet" href="../css/adminStyles.css">
 <style>
@@ -87,7 +88,7 @@ table select:focus {
     outline: none;
     box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
 }
-</style>    
+</style>  
 </head>
 <body>
     <%@include file="../adminNavbar.html" %>
@@ -95,7 +96,7 @@ table select:focus {
     
         <%
         
-        String userId = (String) session.getAttribute("userId");
+
     	if (userId == null) {
     	    // Redirect to login page
     	    response.sendRedirect("../logIn/login.jsp");
@@ -116,7 +117,7 @@ table select:focus {
 
     <%
     	int id;
-    	String username, email, phoneNumber, registerDate, role;
+    	String email, phoneNumber, registerDate, role;
 
         try {
             // Step 1: Load JDBC Driver
@@ -148,7 +149,7 @@ table select:focus {
             <th>Update/Delete</th>
             <th>Remove/Add As Admin</th>
         </tr>
-
+        
         <%
             while (rs.next()) {
                 id = rs.getInt("user_id");

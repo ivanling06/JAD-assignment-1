@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Manage Services</title>
+<%@ include file="../checkRole.jsp" %>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/navbarAdminStyles.css">
 <link rel="stylesheet" href="../css/adminStyles.css">
@@ -206,13 +208,6 @@ table select:focus {
     <%@ page import="java.sql.*" %>
 	
     <%
-    String userId = (String) session.getAttribute("userId");
-	if (userId == null) {
-	    // Redirect to login page
-	    response.sendRedirect("../logIn/login.jsp");
-	    return; // Stop further execution
-	}
-	
         int id;
         String name, description, image;
         double price;
@@ -321,15 +316,14 @@ table select:focus {
         <!-- Update button -->
         <td>
             <button type="submit">Update</button>
-        </td>
-    </form>
-		<td>
-        <form action="delete_service.jsp" method="post" style="display: inline;">
+            <form action="delete_service.jsp" method="post" style="display: inline;">
             <input type="hidden" name="service_id" value="<%= id %>">
             <input type="submit" value="Delete" class="btn-delete" 
                    onclick="return confirm('Are you sure you want to delete this service?')">
         </form>
-    </td>
+        </td>
+    </form>
+	
         </tr>
         <%
             }

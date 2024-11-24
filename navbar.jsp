@@ -24,6 +24,7 @@
 					</div>
 				</div></li>
 			<li><a href="../cart/cart.jsp">Your Cart</a></li>
+			<li><a href="../booking/displayBooking.jsp">Your Bookings</a></li>
 			<li><a href="../feedback/feedback.jsp">Feedback</a></li>
 			<li class="dropdown">
 				<%
