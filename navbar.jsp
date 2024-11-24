@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+			<%
+				String userId = (String) session.getAttribute("userId");
+				String username = (String) session.getAttribute("username"); // Assume username is set in the session after login
+			%>
 <div class="navbar">
 	<div class="navbar-container">
 		<a href="../home/home.jsp"> <img src="../images/logo.png" alt="Sparklean"
@@ -23,15 +26,17 @@
 						<a href="../services/specialisedCleaning.jsp">Specialized Cleaning</a>
 					</div>
 				</div></li>
+			<%
+			if (userId != null) { // Only render these items if the user is logged in
+			%>
 			<li><a href="../cart/cart.jsp">Your Cart</a></li>
 			<li><a href="../booking/displayBooking.jsp">Your Bookings</a></li>
 			<li><a href="../feedback/feedback.jsp">Feedback</a></li>
+			<%
+			}
+			%>
 			<li class="dropdown">
-				<%
-				String userId = (String) session.getAttribute("userId");
-				String username = (String) session.getAttribute("username"); // Assume username is set in the session after login
-				%> <a href="#" class="dropdown-btn"> <%=(userId != null) ? username : "Account"%>
-			</a>
+				<a href="#" class="dropdown-btn"> <%=(userId != null) ? username : "Account"%> </a>
 				<ul class="dropdown-content">
 					<%
 					if (userId == null) {
@@ -48,7 +53,7 @@
 					%>
 				</ul>
 			</li>
-
 		</ul>
 	</div>
 </div>
+
