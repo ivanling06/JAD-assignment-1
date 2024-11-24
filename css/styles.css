@@ -120,3 +120,122 @@ input:focus {
 .register:hover {
     background-color: #0033aa; /* Darker blue for hover effect */
 }
+
+/* Container for Services */
+.services-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* Individual Service Item */
+.service-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff; /* Updated to white */
+    border: 1px solid #e0e7ff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    gap: 20px;
+}
+
+/* Reverse Layout for Alternating Items */
+.service-item.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Text Section */
+.service-text {
+    flex: 1;
+    text-align: left;
+}
+
+.service-text h1 {
+    font-size: 22px;
+    color: #1d4ed8;
+    margin-bottom: 15px;
+}
+
+.service-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.service-text ul li {
+    font-size: 16px;
+    color: #475569;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.service-text ul li::before {
+    content: "•";
+    color: #1d4ed8;
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+/* Blue Button for More Info */
+.cta-button {
+    display: inline-block;
+    background-color: #1d4ed8; /* Blue color */
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #153eab; /* Darker blue on hover */
+}
+
+/* Image Section */
+.service-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-image img {
+    max-width: 60%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .service-item.reverse {
+        flex-direction: column;
+    }
+
+    .service-text ul {
+        text-align: center;
+    }
+
+    .service-text ul li {
+        justify-content: center;
+    }
+
+    .cta-button {
+        width: 100%; /* Button spans full width on smaller screens */
+    }
+}
