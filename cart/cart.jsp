@@ -67,10 +67,12 @@
 				&bookingTime=<%=rs.getTime("booking_time")%>
 				&quantity=<%=rs.getInt("quantity")%>
 				&specialRequests=<%=specialRequests == null || specialRequests.isEmpty() ? "" : specialRequests%>">Edit</a>
+				<a class="delete-link"
+				href="deleteCartItem.jsp?cartId=<%=rs.getInt("cart_id")%>">Delete</a>
 			</td>
 		</tr>
 		<%
-		}
+		}	
 		%>
 	</table>
 	<br>

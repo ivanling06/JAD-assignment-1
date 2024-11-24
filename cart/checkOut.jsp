@@ -42,7 +42,7 @@
             }
 
             // Insert into booking table
-            String insertBookingSQL = "INSERT INTO booking (customer_id, service_id, booking_date, booking_time, special_requests, status, created_at) " +
+            String insertBookingSQL = "INSERT INTO booking (user_id, service_id, booking_date, booking_time, special_requests, status, created_at) " +
                                        "VALUES (?, ?, ?, ?, ?, ?, NOW())";
             bookingStmt = conn.prepareStatement(insertBookingSQL, Statement.RETURN_GENERATED_KEYS);
 
