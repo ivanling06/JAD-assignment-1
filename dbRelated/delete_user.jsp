@@ -66,7 +66,7 @@
         System.err.println("SQLIntegrityConstraintViolationException: " + e.getMessage());
     %>
         <div class="debugBox">
-            Duplicate entry... Try again.
+            User has bookings... Unable to delete
         </div>
     <%
     } catch (SQLSyntaxErrorException e) {
