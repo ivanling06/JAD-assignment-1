@@ -23,8 +23,7 @@
 						<a href="../services/specialisedCleaning.jsp">Specialized Cleaning</a>
 					</div>
 				</div></li>
-			<li><a href="../cart/cart.jsp">Your 	Cart</a></li>
-			<li><a href="contact.jsp">Contact</a></li>
+			<li><a href="../cart/cart.jsp">Your Cart</a></li>
 			<li><a href="../feedback/feedback.jsp">Feedback</a></li>
 			<li class="dropdown">
 				<%
