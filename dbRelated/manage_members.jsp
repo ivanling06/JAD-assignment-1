@@ -106,11 +106,9 @@ table select:focus {
         // Check if a userId was passed in the request
         String userIdParam = request.getParameter("userId");
         if (userIdParam != null && !userIdParam.isEmpty()) {
-            // Set the userId in the session
-            session.setAttribute("userId", userIdParam);
-
+        
             // Optionally redirect to addNewAdmin.jsp
-            response.sendRedirect("addNewAdmin.jsp");
+            response.sendRedirect("addNewAdmin.jsp?userIdParam="+userIdParam);
             return; // Prevent further processing of this page
         }
     %>
