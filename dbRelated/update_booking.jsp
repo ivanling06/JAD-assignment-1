@@ -21,7 +21,7 @@
         Connection conn = DriverManager.getConnection(connURL);
 
         // Step 3: Prepare SQL Update Query
-        String updateSQL = "UPDATE booking SET customer_id = ?, service_id = ?, booking_date = ?, booking_time = ?, special_requests = ?, status = ?, feedback = ? WHERE booking_id = ?";
+        String updateSQL = "UPDATE booking SET user_id = ?, service_id = ?, booking_date = ?, booking_time = ?, special_requests = ?, status = ? WHERE booking_id = ?";
         PreparedStatement pstmt = conn.prepareStatement(updateSQL);
 
         // Step 4: Get parameters from the request
@@ -32,7 +32,6 @@
         String bookingTime = request.getParameter("booking_time");
         String specialRequests = request.getParameter("special_requests");
         String status = request.getParameter("status");
-        String feedback = request.getParameter("feedback");
 
         if (bookingIdStr == null || customerIdStr == null || serviceIdStr == null || bookingDate == null || bookingTime == null || status == null) {
             throw new Exception("Missing parameters.");
@@ -50,8 +49,7 @@
         pstmt.setString(4, bookingTime);
         pstmt.setString(5, specialRequests != null ? specialRequests : "");
         pstmt.setString(6, status);
-        pstmt.setString(7, feedback != null ? feedback : "");
-        pstmt.setInt(8, bookingId);
+        pstmt.setInt(7, bookingId);
 
         // Step 6: Execute Update and check the result
         int rowsAffected = pstmt.executeUpdate();

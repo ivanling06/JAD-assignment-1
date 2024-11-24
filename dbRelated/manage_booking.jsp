@@ -76,7 +76,7 @@
                 <tr>
                     <form action="update_booking.jsp" method="POST">
                         <td><input type="text" name="booking_id" value="<%= bookingId %>" readonly></td>
-                        <td><input type="text" name="customer_id" value="<%= userId %>" required></td>
+                        <td><input type="text" name="customer_id" value="<%= userId %>" readonly></td>
                         <td><input type="text" name="service_id" value="<%= serviceId %>" required></td>
                         <td><input type="date" name="booking_date" value="<%= bookingDate %>" required></td>
                         <td>
