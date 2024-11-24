@@ -55,7 +55,12 @@
         int totalConflicts = rs.next() ? rs.getInt("total_conflicts") : 0;
 
         if (totalConflicts > 0) {
-            response.sendRedirect("editCartItem.jsp?error=Entry already exists for the selected date and time.&cartId=" + cartId);
+            response.sendRedirect("editCartItem.jsp?error=Entry already exists for the selected date and time.&cartId="+ cartId +
+                    "&service_id=" + serviceId +
+                    "&bookingDate=" + bookingDate +
+                    "&bookingTime=" + bookingTime +
+                    "&specialRequests=" + specialRequests +
+                    "&quantity=" + quantity);
         } else {
             // Step 5: Update the `cart` table
             String updateSql = "UPDATE cart " +
@@ -75,7 +80,12 @@
                 response.sendRedirect("cart.jsp?success=Cart item updated successfully.");
             } else {
                 conn.rollback(); // Rollback transaction on failure
-                response.sendRedirect("editCartItem.jsp?error=Failed to update cart entry. Please try again.&cartId=" + cartId);
+                response.sendRedirect("editCartItem.jsp?error=Update failed. Please try again later." +
+                        "&serviceId=" + serviceId +
+                        "&bookingDate=" + bookingDate +
+                        "&bookingTime=" + bookingTime +
+                        "&specialRequests=" + specialRequests +
+                        "&quantity=" + quantity);
             }
         }
     } catch (Exception e) {
@@ -87,7 +97,13 @@
             }
         }
         e.printStackTrace(); // Log the exception for debugging
-        response.sendRedirect("editCartItem.jsp?error=An unexpected error occurred.&cartId=" + (cartId != null ? cartId : ""));
+        response.sendRedirect("editCartItem.jsp?error=An error occurred. Please try again later." +
+                "&serviceId=" + serviceId +
+                "&bookingDate=" + bookingDate +
+                "&bookingTime=" + bookingTime +
+                "&specialRequests=" + specialRequests +
+                "&quantity=" + quantity);
+        		
     } finally {
         // Step 6: Cleanup resources
         try {
