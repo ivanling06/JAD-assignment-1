@@ -103,7 +103,7 @@
 
                 int feedbackOwnerId = rs.getInt("user_id");
                 if (feedbackOwnerId != sessionUserId) {
-                    response.sendRedirect("feedback.jsp?errorCode=6"); // Unauthorized access
+                    response.sendRedirect("feedback.jsp?error=Not yours!"); // Unauthorized access
                     return;
                 }
 

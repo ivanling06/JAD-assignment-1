@@ -148,6 +148,7 @@ tr:hover {
 	}
 	String strUserID = (String) session.getAttribute("userId");
 	int sessionUserId = strUserID != null ? Integer.parseInt(strUserID) : 0;
+	String errMsg = request.getParameter("error");
 
 	Connection conn = null;
 	PreparedStatement pstmt = null;
@@ -181,7 +182,7 @@ tr:hover {
 		<h1>Add Feedback</h1>
 		<%
 		String successMessage = request.getParameter("success");
-		String errorCode = request.getParameter("errorCode");
+		String errorCode = request.getParameter("errCode");
 		String errorMessage = null;
 
 		// Map error codes to user-friendly messages
@@ -331,8 +332,13 @@ tr:hover {
 			<%=errorMessage%>
 		</div>
 		<%
-		}
+		}else if (errMsg != null){
 		%>
+		<div class="error"
+			style="color: #dc3545; font-weight: bold; margin-bottom: 15px;">
+			<%=errMsg%>
+		</div>
+		<%} %>
 		<table>
 			<thead>
 				<tr>
