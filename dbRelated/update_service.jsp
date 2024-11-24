@@ -7,6 +7,7 @@
 </head>
 <body>
     <%@page import="java.sql.*" %>
+    <%@ include file="../checkRole.jsp" %>
     <%
     try {
         Class.forName("com.mysql.cj.jdbc.Driver");

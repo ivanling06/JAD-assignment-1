@@ -142,6 +142,10 @@ tr:hover {
 
 	<%
 	// Fetch session user ID
+	if (userId == null) {
+		response.sendRedirect("../logIn/login.jsp");
+		return;
+	}
 	String strUserID = (String) session.getAttribute("userId");
 	int sessionUserId = strUserID != null ? Integer.parseInt(strUserID) : 0;
 

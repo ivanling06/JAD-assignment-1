@@ -1,4 +1,5 @@
 <%@ page import="java.sql.*" %>
+<%@ include file="../checkRole.jsp" %>
 <%
     String name = request.getParameter("name");
     String description = request.getParameter("description");

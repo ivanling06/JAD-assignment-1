@@ -7,15 +7,10 @@
 </head>
 <body>
     <%@ page import="java.sql.*" %>
+    <%@ include file="../checkRole.jsp" %>
 <%
     // Step 1: Retrieve logged-in user ID from session
-    String loggedInUserId = (String) session.getAttribute("userId"); // Retrieve the session userId
-    out.println("<p>Logged-in User ID: " + loggedInUserId + "</p>");
-
-    if (loggedInUserId == null) {
-        out.println("<p>Error: You must be logged in to perform this action.</p>");
-        return;
-    }
+    
 
     // Step 2: Database connection and role check for logged-in user
     try {
@@ -27,7 +22,7 @@
         // Query to get the logged-in user's role using the session userId
         String roleQuery = "SELECT role FROM user WHERE user_id = ?";
         PreparedStatement roleStmt = conn.prepareStatement(roleQuery);
-        roleStmt.setString(1, loggedInUserId); // Use the logged-in user ID from session
+        roleStmt.setString(1, userId); // Use the logged-in user ID from session
         ResultSet roleResultSet = roleStmt.executeQuery();
 
         if (roleResultSet.next()) {
@@ -60,23 +55,23 @@
             return;
         }
 
-        int userId;
+        int userIdP;
         try {
-            userId = Integer.parseInt(userIdParam); // Safely parse the ID from the request parameter
+            userIdP = Integer.parseInt(userIdParam); // Safely parse the ID from the request parameter
         } catch (NumberFormatException e) {
             out.println("<p>Error: Invalid User ID format.</p>");
             return;
         }
 
         // Debugging output (Optional: Remove in production)
-        out.println("<p>Debug: Logged-in User ID = " + loggedInUserId + "</p>");
+        out.println("<p>Debug: Logged-in User ID = " + userId + "</p>");
         out.println("<p>Debug: Received User ID to update = " + userId + "</p>");
 
         // Step 4: Database logic to check and update the role
         // Validate that the target user exists and is not already an admin
         String checkUserSql = "SELECT role FROM user WHERE user_id = ?";
         PreparedStatement checkStmt = conn.prepareStatement(checkUserSql);
-        checkStmt.setInt(1, userId);
+        checkStmt.setString(1, userId);
         ResultSet rs = checkStmt.executeQuery();
 
         if (!rs.next()) {
@@ -103,7 +98,7 @@
         String updateSql = "UPDATE user SET role = ? WHERE user_id = ?";
         PreparedStatement updateStmt = conn.prepareStatement(updateSql);
         updateStmt.setString(1, "admin");
-        updateStmt.setInt(2, userId);
+        updateStmt.setString(2, userId);
 
         int rowsAffected = updateStmt.executeUpdate();
 

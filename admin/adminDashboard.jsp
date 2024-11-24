@@ -15,7 +15,7 @@
         <p>Select an option to manage:</p>
 
         <div class="dashboard-links">
-            <a href="manage_feedback.jsp" class="dashboard-link">Manage Feedback</a>
+            <a href="../dbRelated/manage_feedback.jsp" class="dashboard-link">Manage Feedback</a>
             <a href="../dbRelated/manage_services.jsp" class="dashboard-link">Manage Services</a>
             <a href="../dbRelated/manage_members.jsp" class="dashboard-link">Manage Members</a>
             <a href="../dbRelated/manage_booking.jsp" class="dashboard-link">Manage Bookings</a>

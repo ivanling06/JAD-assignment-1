@@ -23,7 +23,7 @@
     String ratingStr = request.getParameter("rating");
 
     if (bookingIdStr == null || comments == null || ratingStr == null) {
-        out.println("<p>All fields are required!</p>");
+        response.sendRedirect("feedback.jsp?error= all parameters must be filled");
         return;
     }
 
@@ -33,7 +33,7 @@
         bookingId = Integer.parseInt(bookingIdStr);
         rating = Integer.parseInt(ratingStr);
     } catch (NumberFormatException e) {
-        out.println("<p>Invalid input. Booking ID and Rating must be numeric.</p>");
+    	response.sendRedirect("feedback.jsp?error= Invalid input. Booking ID and Rating must be numeric.");
         return;
     }
 

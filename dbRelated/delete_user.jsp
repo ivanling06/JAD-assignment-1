@@ -7,6 +7,7 @@
 </head>
 <body>
     <%@page import="java.sql.*" %>
+    <%@ include file="../checkRole.jsp" %>
 
     <%
     try {
@@ -33,10 +34,10 @@
         }
 
         // Convert service_id to the correct data type
-        int userId = Integer.parseInt(userIdStr);
+        int userId1 = Integer.parseInt(userIdStr);
 
         // Step 5: Set parameters for the PreparedStatement
-        pstmt.setInt(1, userId);
+        pstmt.setInt(1, userId1);
 
         // Debugging: Print out the SQL query being executed
         System.out.println("Executing SQL: " + deleteSQL);

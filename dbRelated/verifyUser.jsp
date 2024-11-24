@@ -61,7 +61,7 @@
                     out.println("Unknown role. Please contact support.");
                 } 
             } else {
-                out.println("Invalid email or password.");
+                response.sendRedirect("../logIn/login.jsp?error= Invalid email or password");
             }
 
             // Close the connection

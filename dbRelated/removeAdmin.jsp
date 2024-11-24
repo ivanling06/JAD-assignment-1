@@ -7,6 +7,7 @@
 </head>
 <body>
     <%@ page import="java.sql.*" %>
+    <%@ include file="../checkRole.jsp" %>
 <%
     // Step 1: Retrieve logged-in user ID from session
     String loggedInUserId = (String) session.getAttribute("userId"); // Retrieve the session userId
@@ -60,9 +61,9 @@
             return;
         }
 
-        int userId;
+        int userId1;
         try {
-            userId = Integer.parseInt(userIdParam); // Safely parse the ID from the request parameter
+            userId1 = Integer.parseInt(userIdParam); // Safely parse the ID from the request parameter
         } catch (NumberFormatException e) {
             out.println("<p>Error: Invalid User ID format.</p>");
             return;
@@ -76,7 +77,7 @@
         // Validate that the target user exists and is not already an admin
         String checkUserSql = "SELECT role FROM user WHERE user_id = ?";
         PreparedStatement checkStmt = conn.prepareStatement(checkUserSql);
-        checkStmt.setInt(1, userId);
+        checkStmt.setInt(1, userId1);
         ResultSet rs = checkStmt.executeQuery();
 
         if (!rs.next()) {
@@ -103,7 +104,7 @@
         String updateSql = "UPDATE user SET role = ? WHERE user_id = ?";
         PreparedStatement updateStmt = conn.prepareStatement(updateSql);
         updateStmt.setString(1, "customer");
-        updateStmt.setInt(2, userId);
+        updateStmt.setInt(2, userId1);
 
         int rowsAffected = updateStmt.executeUpdate();
 

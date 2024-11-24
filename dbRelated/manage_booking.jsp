@@ -67,7 +67,6 @@
 
                     while (rs.next()) {
                         int bookingId = rs.getInt("booking_id");
-                        int customerId = rs.getInt("customer_id");
                         int serviceId = rs.getInt("service_id");
                         String bookingDate = rs.getString("booking_date");
                         String bookingTime = rs.getString("booking_time");
@@ -77,7 +76,7 @@
                 <tr>
                     <form action="update_booking.jsp" method="POST">
                         <td><input type="text" name="booking_id" value="<%= bookingId %>" readonly></td>
-                        <td><input type="text" name="customer_id" value="<%= customerId %>" required></td>
+                        <td><input type="text" name="customer_id" value="<%= userId %>" required></td>
                         <td><input type="text" name="service_id" value="<%= serviceId %>" required></td>
                         <td><input type="date" name="booking_date" value="<%= bookingDate %>" required></td>
                         <td>
