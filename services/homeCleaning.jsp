@@ -10,7 +10,7 @@
 <body>
 <%@ include file="../navbar.jsp" %>  
 
-    <h1>Our Services</h1>
+    <h1>Home Services</h1>
     <div class="services">
         <%
             Connection conn = null;
