@@ -250,12 +250,12 @@ table select:focus {
 
 	        <div class="form-group">
 	            <label for="price">Price:</label>
-	            <input type="number" id="price" name="price" step="0.01" required>
+	            <input type="number" id="price" name="price" required>
 	        </div>
 
         <div class="form-group">
             <label for="image">Image URL:</label>
-            <input type="text" id="image" name="image" required>
+            <input type="text" id="image" name="image" value="/images/default.png">
         </div>
 
         <div class="form-group">
@@ -298,11 +298,10 @@ table select:focus {
         <td><input type="hidden" name="service_id" value="<%= id %>"><%= id %></td>
 
         <!-- Editable fields -->
-        <td><input type="text" name="name" value="<%= name %>" required></td>
-        <td><input type="text" name="description" value="<%= description %>" required></td>
-        <td><input type="number" name="price" value="<%= price %>" required></td>
-        <td><input type="text" name="image" value="<%= image %>" required></td>
-        <td><img src="..<%= image %>" class="table-image class-table"></td>
+       <td><input type="text" name="name" value="<%= name %>" required></td>
+			<td><input type="text" name="description" value="<%= description %>" required></td>
+			<td><input type="number" name="price" value="<%= price %>" required></td>
+			<td><input type="text" name="image" value="<%= image %>"></td>
 
         <!-- Category dropdown -->
         <td>
@@ -317,9 +316,11 @@ table select:focus {
         <td>
             <button type="submit">Update</button>
             <form action="delete_service.jsp" method="post" style="display: inline;">
-            <input type="hidden" name="service_id" value="<%= id %>">
-            <input type="submit" value="Delete" class="btn-delete" 
-                   onclick="return confirm('Are you sure you want to delete this service?')">
+		    <input type="hidden" name="service_id" value="<%= id %>">
+		    <a class="delete-link"
+				href="delete_service.jsp?service_id=<%= id %>">Delete</a>
+</form>
+
         </form>
         </td>
     </form>

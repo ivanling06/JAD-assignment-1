@@ -23,9 +23,9 @@
         int rowsAffected = pstmt.executeUpdate();
         
         if (rowsAffected > 0) {
-            out.println("<p>Service added successfully!</p>");
+            response.sendRedirect("manage_services.jsp?success=added!");
         } else {
-            out.println("<p>Error adding service. Please try again.</p>");
+        	response.sendRedirect("manage_services.jsp?error= Error");
         }
         
         pstmt.close();
